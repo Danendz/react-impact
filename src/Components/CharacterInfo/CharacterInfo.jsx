@@ -56,7 +56,7 @@ const CharacterInfo = ({ isLoading, characterData }) => {
             className={cl.img}
             src={vision}
             alt="vision pic"
-          />{" "}
+          />
           {characterData["name"]}
         </p>
 

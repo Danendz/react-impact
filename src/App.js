@@ -11,11 +11,14 @@ function App() {
   const [characterData, setCharacterData] = useState({});
   const [modal, setModal] = useState(false);
   const [isCharacterDataLoading, setIsCharacterDataLoading] = useState(false);
+  const [isCharactersLoading, setIsCharactersLoading] = useState(false)
   const [query, setQuery] = useState("");
 
   async function fetchCharacters() {
+    setIsCharactersLoading(true);
     const charactersInfo = await CharacterService.getCharacters();
     setCharacters(charactersInfo);
+    setIsCharactersLoading(false);
   }
 
   useEffect(() => {
@@ -31,7 +34,6 @@ function App() {
   }
 
   const searchPost = useMemo(() => {
-    console.log('rerender')
     if (query) {
       return characters.filter((char) =>
         char.name.toLowerCase().includes(query.toLowerCase().trim())
@@ -50,14 +52,11 @@ function App() {
           characterData={characterData}
         />
       </Modal>
-      {searchPost.length ? (
-        <CharactersContainer
-          getCharacterData={fetchCharacterData}
-          characters={searchPost}
-        />
-      ) : (
-        <h1 style={{ marginTop: 40 }}>Извините таких персонажей нет!</h1>
-      )}
+      <CharactersContainer
+        isLoading={isCharactersLoading}
+        getCharacterData={fetchCharacterData}
+        characters={searchPost}
+      />
     </div>
   );
 }

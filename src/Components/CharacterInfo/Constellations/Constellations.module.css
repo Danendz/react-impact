@@ -1,3 +1,6 @@
+.container{
+    transition: all .3s;
+}
 @media only screen and (max-width: 730px) {
     .container{
         display: flex;

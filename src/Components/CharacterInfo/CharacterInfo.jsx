@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cl from "./CharacterInfo.module.css";
 import Loader from "../UI/Loader/Loader";
 import Constelattions from "./Constellations/Constellations";
@@ -6,6 +6,7 @@ import Constelattions from "./Constellations/Constellations";
 const CharacterInfo = ({ isLoading, characterData }) => {
   const [bgColor, setBgColor] = useState("");
   const [vision, setVision] = useState("");
+  const visionImage = useRef();
   useEffect(() => {
     const getNameBgColor = () => {
       const visions = {
@@ -33,10 +34,14 @@ const CharacterInfo = ({ isLoading, characterData }) => {
       );
     };
     getNameBgColor();
-  }, [characterData]);
+  }, [characterData, vision]);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className={cl.loader}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -46,7 +51,12 @@ const CharacterInfo = ({ isLoading, characterData }) => {
     >
       <div className={cl.content}>
         <p style={{ backgroundColor: bgColor }} className={cl.name}>
-          <img className={cl.img} src={vision} alt="vision pic" />{" "}
+          <img
+            ref={visionImage}
+            className={cl.img}
+            src={vision}
+            alt="vision pic"
+          />{" "}
           {characterData["name"]}
         </p>
 

@@ -31,10 +31,3 @@
     width: 100%;
   }
 }
-
-@media only screen and (max-height: 800px){
-  .modal_content {
-    margin: 0 50px;
-    max-width: 60%;
-  }
-}

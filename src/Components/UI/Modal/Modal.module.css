@@ -10,12 +10,13 @@
 }
 
 .modal_content {
+  position: relative;
   margin-left: 100px;
   margin-right: 100px;
-  padding: 25px;
   background-color: white;
-  border-radius: 15px;
-  max-width: 100%;
+  border-radius: 20px;
+  width: 70%;
+  height: 80vh;
 }
 
 .modal.active {
@@ -26,8 +27,8 @@
 
 @media only screen and (max-width: 600px) {
   .modal_content {
-    margin: 0 40px;
-    max-width: 60%;
+    margin: 0 10px;
+    width: 100%;
   }
 }
 

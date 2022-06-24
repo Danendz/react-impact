@@ -5,7 +5,7 @@ export default class CharacterService{
         try{
             const names = await axios.get('https://api.genshin.dev/characters');
             const iconLink = 'https://api.genshin.dev/characters/';
-
+            
             const charObj = names.data.map((name) =>{
                 return {name: name, icon: iconLink + name + '/icon'}
             })

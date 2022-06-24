@@ -8,7 +8,7 @@ import "./style/App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [characterData, setCharacterData] = useState({});
+  const [characterData, setCharacterData] = useState([]);
   const [modal, setModal] = useState(false);
   const [isCharacterDataLoading, setIsCharacterDataLoading] = useState(false);
   const [isCharactersLoading, setIsCharactersLoading] = useState(false)
@@ -26,10 +26,14 @@ function App() {
   }, []);
 
   async function fetchCharacterData(name) {
-    setIsCharacterDataLoading(true);
-    setModal(true);
     const characterData = await CharacterService.getCharacterData(name);
     setCharacterData(characterData);
+  }
+
+  async function modalOpen(name){
+    setIsCharacterDataLoading(true);
+    setModal(true);
+    await fetchCharacterData(name)
     setIsCharacterDataLoading(false);
   }
 
@@ -49,12 +53,13 @@ function App() {
       <Modal modal={modal} setModal={setModal}>
         <CharacterInfo
           isLoading={isCharacterDataLoading}
+          
           characterData={characterData}
         />
       </Modal>
       <CharactersContainer
         isLoading={isCharactersLoading}
-        getCharacterData={fetchCharacterData}
+        openModal={modalOpen}
         characters={searchPost}
       />
     </div>

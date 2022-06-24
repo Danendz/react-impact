@@ -1,41 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cl from "./CharacterInfo.module.css";
 import Loader from "../UI/Loader/Loader";
-import Modal from "../UI/Modal/Modal";
 import Constelattions from "./Constellations/Constellations";
 
 const CharacterInfo = ({ isLoading, characterData }) => {
-  const [modal, setModal] = useState(false);
+  const [bgColor, setBgColor] = useState("");
+  const [vision, setVision] = useState("");
+  useEffect(() => {
+    const getNameBgColor = () => {
+      const visions = {
+        Cryo: "https://muakasan.github.io/genshin-portraits/assets/cryo.png",
+        Geo: "https://muakasan.github.io/genshin-portraits/assets/geo.png",
+        Anemo: "https://muakasan.github.io/genshin-portraits/assets/anemo.png",
+        Electro:
+          "https://muakasan.github.io/genshin-portraits/assets/electro.png",
+        Pyro: "https://muakasan.github.io/genshin-portraits/assets/pyro.png",
+        Hydro: "https://muakasan.github.io/genshin-portraits/assets/hydro.png",
+      };
+      const colors = {
+        Cryo: "rgba(52, 152, 219, 0.6)",
+        Geo: "rgba(243, 157, 18, 0.6)",
+        Anemo: "rgba(46, 204, 112, 0.6)",
+        Electro: "rgba(156, 89, 182, 0.6)",
+        Pyro: "rgba(231, 77, 60, 0.6)",
+        Hydro: "rgba(41, 127, 185, 0.6)",
+      };
+      setBgColor(
+        characterData["vision"] ? colors[characterData["vision"]] : "black"
+      );
+      setVision(
+        characterData["vision"] ? visions[characterData["vision"]] : "#"
+      );
+    };
+    getNameBgColor();
+  }, [characterData]);
+
   if (isLoading) {
     return <Loader />;
   }
+
   return (
-    <div className={cl.info}>
-      <img
-        className={cl.info_card}
-        alt="character card"
-        src={characterData["card"]}
-      />
-      <div>
-        <p>
-          Name: <strong>{characterData["name"]}</strong>
+    <div
+      style={{ backgroundImage: `url(${characterData["card"]})` }}
+      className={cl.info}
+    >
+      <div className={cl.content}>
+        <p style={{ backgroundColor: bgColor }} className={cl.name}>
+          <img className={cl.img} src={vision} alt="vision pic" />{" "}
+          {characterData["name"]}
         </p>
-        <p>
-          Vision: <strong>{characterData["vision"]}</strong>
-        </p>
-        <p>
-          Weapon: <strong>{characterData["weapon"]}</strong>
-        </p>
-        <p>
-          City: <strong>{characterData["nation"]}</strong>
-        </p>
-        <p>
-          Constellation: <strong>{characterData["constellation"]}</strong>
-        </p>
-        <Modal modal={modal} setModal={setModal}>
-          <Constelattions consts={characterData["constellations"]} />
-        </Modal>
-        <button onClick={() => setModal(true)}>Constellation</button>
+
+        <div className={cl.const}>
+          <Constelattions
+            bgColor={bgColor}
+            consts={characterData["constellations"]}
+          />
+        </div>
       </div>
     </div>
   );

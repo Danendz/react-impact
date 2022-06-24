@@ -1,0 +1,11 @@
+@media only screen and (max-width: 730px) {
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .consts{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

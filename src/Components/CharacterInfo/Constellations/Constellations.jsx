@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import Constellation from "./Constellation/Constellation";
+import ConstellationBody from "./ConstellationBody/ConstellationBody";
+import cl from "./Constellations.module.css";
+const Constelattions = ({ consts, bgColor }) => {
+  const [currentConst, setCurrentConst] = useState(1);
 
-const Constelattions = ({ consts }) => {
-    if(!consts){
-        return(
-            <div></div>
-        )
-    }
+  if (!consts) {
+    return <div></div>;
+  }
+
   return (
-    <div>
-      {consts.map((constellation, index) => (
-        <ul key={index + 1}>
-            <li>
-                Constellation number: {constellation['unlock']}
-            </li>
-            <li>
-                Constellation name: {constellation['name']}
-            </li>
-        </ul>
-        
-      ))}
+    <div className={cl.container}>
+      <div className={cl.consts}>
+        {consts.map((_, index) => (
+          <Constellation
+            key={index}
+            setCurrentConst={setCurrentConst}
+            bgColor={bgColor}
+            id={index + 1}
+          />
+        ))}
+      </div>
+      <ConstellationBody
+        bgColor={bgColor}
+        constellation={consts[currentConst - 1]}
+      />
     </div>
   );
 };

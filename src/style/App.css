@@ -2,9 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+html{
+  
+  background-color: #34495e;
 }
 #root {
+
   display: flex;
+  color: white;
   justify-content: center;
   align-items: center;
 }

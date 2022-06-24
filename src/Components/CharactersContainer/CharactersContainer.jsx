@@ -9,7 +9,7 @@ const CharactersContainer = ({ isLoading, characters, openModal }) => {
     return <Loader style={{marginTop: 40}} />;
   }
   if (!characters.length) {
-    return <h1 style={{ marginTop: 40 }}>Извините таких персонажей нет!</h1>;
+    return <h1 className={cl.characterNotFound} style={{ marginTop: 40 }}>Извините таких персонажей нет!</h1>;
   }
   return (
     <div className={cl.charactersContainer}>

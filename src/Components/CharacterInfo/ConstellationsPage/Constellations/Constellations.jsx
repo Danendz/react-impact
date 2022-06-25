@@ -21,6 +21,7 @@ const Constelattions = ({ consts, bgColor }) => {
           />
         ))}
       </div>
+      
       <ConstellationBody
         bgColor={bgColor}
         constellation={consts[currentConst - 1]}

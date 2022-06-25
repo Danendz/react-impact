@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   background-size: cover;
-  background-position:center;
+  background-position: center;
   width: 100%;
   height: inherit;
   border-radius: 20px;
@@ -19,9 +19,9 @@
   width: 100%;
   color: white;
 }
-.img{
-    margin-right: 5px;
-    width: 50px;
+.img {
+  margin-right: 5px;
+  width: 50px;
 }
 .name {
   position: absolute;
@@ -31,33 +31,23 @@
   top: 80%;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-.const {
-  position: absolute;
-  width: 100%;
-  top: 15%;
-  
-}
-.loader{
+.loader {
   display: flex;
   align-items: center;
   justify-content: center;
   height: inherit;
 }
 @media only screen and (max-width: 730px) {
-  .const {
-    position:unset;
-    margin-bottom: 20px;
-  }
-  .name{
+  .name {
     position: unset;
     font-size: 30px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
-  .img{
+  .img {
     width: 30px;
   }
-  .content{
+  .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

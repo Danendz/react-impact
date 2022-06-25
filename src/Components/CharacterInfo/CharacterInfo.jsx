@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import cl from "./CharacterInfo.module.css";
 import Loader from "../UI/Loader/Loader";
-import Constelattions from "./Constellations/Constellations";
+import './style/info.css';
+import ConstelattionsPage from "./ConstellationsPage/ConstellationsPage";
 
 const CharacterInfo = ({ isLoading, characterData }) => {
   const [bgColor, setBgColor] = useState({
@@ -89,13 +90,10 @@ const CharacterInfo = ({ isLoading, characterData }) => {
           <img className={cl.img} src={vision} alt="vision pic" />
           {characterData["name"]}
         </p>
-
-        <div className={cl.const}>
-          <Constelattions
-            bgColor={bgColor.buttonsBgColor}
-            consts={characterData["constellations"]}
-          />
-        </div>
+        <ConstelattionsPage
+          characterData={characterData}
+          bgColor={bgColor}
+        />
       </div>
     </div>
   );

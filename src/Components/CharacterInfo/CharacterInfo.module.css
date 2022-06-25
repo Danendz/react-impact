@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-evenly;
   background-size: cover;
-  background-position: center;
+  background-position:center;
   width: 100%;
   height: inherit;
   border-radius: 20px;
 }
+
 .info p {
   font-family: "Times New Roman", Times, serif;
   justify-content: center;
@@ -16,7 +17,6 @@
 .content {
   border-radius: 20px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
   color: white;
 }
 .img{
@@ -29,11 +29,13 @@
   text-align: center;
   width: 100%;
   top: 80%;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 .const {
   position: absolute;
   width: 100%;
   top: 15%;
+  
 }
 .loader{
   display: flex;
@@ -49,6 +51,8 @@
   .name{
     position: unset;
     font-size: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   .img{
     width: 30px;

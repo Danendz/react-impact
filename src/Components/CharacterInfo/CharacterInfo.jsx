@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cl from "./CharacterInfo.module.css";
 import Loader from "../UI/Loader/Loader";
-import './style/info.css';
+import "./style/info.css";
 import ConstelattionsPage from "./ConstellationsPage/ConstellationsPage";
 
 const CharacterInfo = ({ isLoading, characterData }) => {
@@ -12,9 +12,40 @@ const CharacterInfo = ({ isLoading, characterData }) => {
     buttonsBgColor: "black",
   });
   const [vision, setVision] = useState("");
+  const [id, setId] = useState({
+    lastId: 0,
+    currentId: 0,
+  });
+
+  const pagesContainer = useRef();
 
   const getColorWithAlpha = (color, alpha) => {
     return `rgba(${color}, ${alpha})`;
+  };
+
+  useEffect(() => {
+    if (pagesContainer) {
+      console.log(id);
+      const pagesArr = pagesContainer.current.children;
+      pagesArr[id.lastId].style.display = "none";
+      pagesArr[id.currentId].style.display = "block";
+    }
+  }, [id]);
+
+  useEffect(() => {
+    setId({ currentId: 0, lastId: 0 });
+  }, [characterData]);
+
+  const nextPage = () => {
+    if (id.currentId + 1 <= pagesContainer.current.children.length - 1) {
+      setId({ lastId: id.currentId, currentId: id.currentId + 1 });
+    }
+  };
+
+  const prevPage = () => {
+    if (id.currentId - 1 >= 0) {
+      setId({ lastId: id.currentId, currentId: id.currentId - 1 });
+    }
   };
 
   useEffect(() => {
@@ -90,10 +121,20 @@ const CharacterInfo = ({ isLoading, characterData }) => {
           <img className={cl.img} src={vision} alt="vision pic" />
           {characterData["name"]}
         </p>
-        <ConstelattionsPage
-          characterData={characterData}
-          bgColor={bgColor}
-        />
+        <button onClick={() => prevPage()}>Prev</button>
+        <button onClick={() => nextPage()}>next</button>
+        <div ref={pagesContainer}>
+          <ConstelattionsPage
+            title={"Constellations"}
+            characterData={characterData}
+            bgColor={bgColor}
+          />
+          <ConstelattionsPage
+            title={"second"}
+            characterData={characterData}
+            bgColor={bgColor}
+          />
+        </div>
       </div>
     </div>
   );

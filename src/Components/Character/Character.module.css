@@ -3,10 +3,10 @@
     flex-direction: column;
     width: fit-content;
     font-size: 15px;
-    
+    align-items:center;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    margin: 5px;
+    margin: 10px;
     justify-content: flex-end;
     transition: all .2s ease;
     user-select: none;
@@ -16,7 +16,7 @@
 }
 
 .character_icon{
-    width: 85px;
+    width: 100px;
     
     -webkit-user-drag: none;
     user-select: none;

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import cl from "./CharacterInfo.module.css";
-import Loader from "../UI/Loader/Loader";
 import "./style/info.css";
 import ConstelattionsPage from "./ConstellationsPage/ConstellationsPage";
 
-const CharacterInfo = ({ isLoading, characterData }) => {
+const CharacterInfo = ({ characterData, getVisionImgs }) => {
   const [bgColor, setBgColor] = useState({
     contentColor: "black",
     nameColor: "black",
@@ -19,13 +18,12 @@ const CharacterInfo = ({ isLoading, characterData }) => {
 
   const pagesContainer = useRef();
 
-  const getColorWithAlpha = (color, alpha) => {
+  const getColorWithAlpha = async (color, alpha) => {
     return `rgba(${color}, ${alpha})`;
   };
 
   useEffect(() => {
     if (pagesContainer) {
-      console.log(id);
       const pagesArr = pagesContainer.current.children;
       pagesArr[id.lastId].style.display = "none";
       pagesArr[id.currentId].style.display = "block";
@@ -49,7 +47,7 @@ const CharacterInfo = ({ isLoading, characterData }) => {
   };
 
   useEffect(() => {
-    function getVisionBgColor() {
+    async function getVisionBgColor() {
       const colors = {
         Cryo: "52, 152, 219",
         Geo: "243, 157, 18",
@@ -60,10 +58,10 @@ const CharacterInfo = ({ isLoading, characterData }) => {
       };
       const currentVisionColor = colors[characterData["vision"]];
 
-      const nameBgColor = getColorWithAlpha(currentVisionColor, 0.6);
-      const contentBgColor = getColorWithAlpha(currentVisionColor, 0.1);
-      const boxShadowBgColor = getColorWithAlpha(currentVisionColor, 0.2);
-      const buttonsBgColor = getColorWithAlpha(currentVisionColor, 0.7);
+      const nameBgColor = await getColorWithAlpha(currentVisionColor, 0.6);
+      const contentBgColor = await getColorWithAlpha(currentVisionColor, 0.1);
+      const boxShadowBgColor = await getColorWithAlpha(currentVisionColor, 0.5);
+      const buttonsBgColor = await getColorWithAlpha(currentVisionColor, 0.7);
 
       setBgColor(
         characterData["vision"]
@@ -80,34 +78,21 @@ const CharacterInfo = ({ isLoading, characterData }) => {
   }, [characterData]);
 
   useEffect(() => {
-    const getVisionImgs = () => {
-      const visions = {
-        Cryo: "https://muakasan.github.io/genshin-portraits/assets/cryo.png",
-        Geo: "https://muakasan.github.io/genshin-portraits/assets/geo.png",
-        Anemo: "https://muakasan.github.io/genshin-portraits/assets/anemo.png",
-        Electro:
-          "https://muakasan.github.io/genshin-portraits/assets/electro.png",
-        Pyro: "https://muakasan.github.io/genshin-portraits/assets/pyro.png",
-        Hydro: "https://muakasan.github.io/genshin-portraits/assets/hydro.png",
-      };
+    const getVisionIcon = async () => {
       setVision(
-        characterData["vision"] ? visions[characterData["vision"]] : "#"
+        characterData["vision"]
+          ? await getVisionImgs(characterData["vision"])
+          : "#"
       );
     };
-    getVisionImgs();
-  }, [characterData]);
-
-  if (isLoading) {
-    return (
-      <div className={cl.loader}>
-        <Loader />
-      </div>
-    );
-  }
+    getVisionIcon();
+  }, [characterData, getVisionImgs]);
 
   return (
     <div
-      style={{ backgroundImage: `url(${characterData["card"]})` }}
+      style={{
+        backgroundImage: `url(${characterData["card"]})`,
+      }}
       className={cl.info}
     >
       <div
@@ -121,8 +106,7 @@ const CharacterInfo = ({ isLoading, characterData }) => {
           <img className={cl.img} src={vision} alt="vision pic" />
           {characterData["name"]}
         </p>
-        <button onClick={() => prevPage()}>Prev</button>
-        <button onClick={() => nextPage()}>next</button>
+
         <div ref={pagesContainer}>
           <ConstelattionsPage
             title={"Constellations"}
@@ -134,6 +118,20 @@ const CharacterInfo = ({ isLoading, characterData }) => {
             characterData={characterData}
             bgColor={bgColor}
           />
+          <button
+            style={{ backgroundColor: bgColor.buttonsBgColor }}
+            className={cl.btnLeft}
+            onClick={() => prevPage()}
+          >
+            Previous
+          </button>
+          <button
+            style={{ backgroundColor: bgColor.buttonsBgColor }}
+            className={cl.btnRight}
+            onClick={() => nextPage()}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

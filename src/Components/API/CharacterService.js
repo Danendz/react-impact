@@ -27,6 +27,7 @@ export default class CharacterService {
     const link = "https://api.genshin.dev/characters/" + name;
     const characterData = await axios.get(link);
     characterData.data["card"] = link + "/card";
+    characterData.data["gacha-splash"] = link + "/gacha-splash";
     return characterData;
   }
 }

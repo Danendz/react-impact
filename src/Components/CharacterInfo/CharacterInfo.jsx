@@ -96,10 +96,11 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     getVisionIcon();
   }, [characterData, getVisionImgs]);
 
+
   return (
     <div
       style={{
-        backgroundImage: `url(${characterData["card"]})`,
+        backgroundImage: `url(${characterData["card"]}), url(${characterData['gacha-splash']})`,
       }}
       className={cl.info}
     >
@@ -117,10 +118,7 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
 
         <div>
           <div ref={pagesContainer}>
-            <PagesHolder
-              characterData={characterData}
-              bgColor={bgColor}
-            />
+            <PagesHolder characterData={characterData} bgColor={bgColor} />
           </div>
           <button
             style={{ backgroundColor: bgColor.buttonsBgColor }}

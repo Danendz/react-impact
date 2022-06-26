@@ -18,13 +18,15 @@ const CharacterInfo = ({ characterData, getVisionImgs }) => {
       case "next":
         if (id.currentId + 1 <= pagesContainer.current.children.length - 1) {
           return { ...id, lastId: id.currentId, currentId: id.currentId + 1 };
+        } else {
+          return { ...id };
         }
-        break;
       case "prev":
         if (id.currentId - 1 >= 0) {
           return { ...id, lastId: id.currentId, currentId: id.currentId - 1 };
+        } else {
+          return { ...id };
         }
-        break;
       case "reset":
         return { ...id, lastId: id.currentId, currentId: 0 };
       default:
@@ -113,17 +115,19 @@ const CharacterInfo = ({ characterData, getVisionImgs }) => {
           {characterData["name"]}
         </p>
 
-        <div ref={pagesContainer}>
-          <ConstelattionsPage
-            title={"Constellations"}
-            characterData={characterData}
-            bgColor={bgColor}
-          />
-          <ConstelattionsPage
-            title={"second"}
-            characterData={characterData}
-            bgColor={bgColor}
-          />
+        <div>
+          <div ref={pagesContainer}>
+            <ConstelattionsPage
+              title={"Constellations"}
+              characterData={characterData}
+              bgColor={bgColor}
+            />
+            <ConstelattionsPage
+              title={"second"}
+              characterData={characterData}
+              bgColor={bgColor}
+            />
+          </div>
           <button
             style={{ backgroundColor: bgColor.buttonsBgColor }}
             className={cl.btnLeft}

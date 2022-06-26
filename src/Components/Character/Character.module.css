@@ -5,8 +5,8 @@
     font-size: 15px;
     
     border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    margin: 10px;
+    border-radius: 10px;
+    margin: 5px;
     justify-content: flex-end;
     transition: all .2s ease;
     user-select: none;
@@ -16,7 +16,7 @@
 }
 
 .character_icon{
-    width: 80px;
+    width: 85px;
     margin: 0px 20px 0px 20px;
     -webkit-user-drag: none;
     user-select: none;
@@ -24,8 +24,8 @@
 .character_name{
     width: 100%;
     padding: 5px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #8e44ad;
     text-transform: capitalize;
     color: #ecf0f1;

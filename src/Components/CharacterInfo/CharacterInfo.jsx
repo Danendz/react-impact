@@ -102,12 +102,15 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
   useEffect(() => {
     setIsLoaded(false);
     const img = new Image();
+    const imgError = new Image()
     function onImageLoad() {
       setIsLoaded(true);
     }
     function imgErrorHandler() {
       backImage.current.style.backgroundImage = `url(${characterData["gacha-splash"]})`;
-      setIsLoaded(true);
+      
+      imgError.src = characterData['gacha-splash']
+      imgError.addEventListener('load', onImageLoad)
     }
 
     img.src = characterData["card"];
@@ -115,7 +118,8 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     img.addEventListener("error", imgErrorHandler);
     return () => {
       img.removeEventListener("load", onImageLoad);
-      img.removeEventListener("load", imgErrorHandler);
+      img.removeEventListener("error", imgErrorHandler);
+      imgError.removeEventListener("load", onImageLoad)
     };
   }, [characterData]);
 
@@ -130,13 +134,17 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
         </div>
       </div>
       <div
+        ref={backImage}
         style={
           isLoaded
             ? {
                 display: "flex",
                 backgroundImage: `url(${characterData["card"]})`,
               }
-            : { display: "none" }
+            : {
+                display: "none",
+                backgroundImage: `url(${characterData["card"]})`,
+              }
         }
         className={cl.info}
       >

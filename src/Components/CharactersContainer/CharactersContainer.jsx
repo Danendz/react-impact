@@ -18,9 +18,7 @@ const CharactersContainer = ({ isLoading, characters, openModal }) => {
   return (
     <div className={cl.charactersContainer}>
       {characters.map(({ name, icon, data }, index) => (
-        <>
-          <Character key={name} openModal={openModal} name={name} icon={icon} />
-        </>
+        <Character key={name} openModal={openModal} name={name} icon={icon} />
       ))}
     </div>
   );

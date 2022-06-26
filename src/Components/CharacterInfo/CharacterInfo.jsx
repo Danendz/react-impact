@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import cl from "./CharacterInfo.module.css";
 import "./style/info.css";
 import ConstelattionsPage from "./ConstellationsPage/ConstellationsPage";
@@ -11,12 +11,30 @@ const CharacterInfo = ({ characterData, getVisionImgs }) => {
     buttonsBgColor: "black",
   });
   const [vision, setVision] = useState("");
-  const [id, setId] = useState({
+  const pagesContainer = useRef();
+
+  const reducer = (id, action) => {
+    switch (action.type) {
+      case "next":
+        if (id.currentId + 1 <= pagesContainer.current.children.length - 1) {
+          return { ...id, lastId: id.currentId, currentId: id.currentId + 1 };
+        }
+        break;
+      case "prev":
+        if (id.currentId - 1 >= 0) {
+          return { ...id, lastId: id.currentId, currentId: id.currentId - 1 };
+        }
+        break;
+      case "reset":
+        return { ...id, lastId: id.currentId, currentId: 0 };
+      default:
+        return id;
+    }
+  };
+  const [id, dispatch] = useReducer(reducer, {
     lastId: 0,
     currentId: 0,
   });
-
-  const pagesContainer = useRef();
 
   const getColorWithAlpha = async (color, alpha) => {
     return `rgba(${color}, ${alpha})`;
@@ -31,20 +49,8 @@ const CharacterInfo = ({ characterData, getVisionImgs }) => {
   }, [id]);
 
   useEffect(() => {
-    setId({ currentId: 0, lastId: 0 });
+    dispatch({ type: "reset" });
   }, [characterData]);
-
-  const nextPage = () => {
-    if (id.currentId + 1 <= pagesContainer.current.children.length - 1) {
-      setId({ lastId: id.currentId, currentId: id.currentId + 1 });
-    }
-  };
-
-  const prevPage = () => {
-    if (id.currentId - 1 >= 0) {
-      setId({ lastId: id.currentId, currentId: id.currentId - 1 });
-    }
-  };
 
   useEffect(() => {
     async function getVisionBgColor() {
@@ -121,14 +127,14 @@ const CharacterInfo = ({ characterData, getVisionImgs }) => {
           <button
             style={{ backgroundColor: bgColor.buttonsBgColor }}
             className={cl.btnLeft}
-            onClick={() => prevPage()}
+            onClick={() => dispatch({ type: "prev" })}
           >
             Previous
           </button>
           <button
             style={{ backgroundColor: bgColor.buttonsBgColor }}
             className={cl.btnRight}
-            onClick={() => nextPage()}
+            onClick={() => dispatch({ type: "next" })}
           >
             Next
           </button>

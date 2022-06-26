@@ -5,7 +5,6 @@
   
 }
 html{
-  
   background-color: #34495e;
 }
 #root {
@@ -22,3 +21,13 @@ html{
   align-items: center;
 }
 
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #8e44ad;
+}

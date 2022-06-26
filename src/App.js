@@ -60,6 +60,7 @@ function App() {
         <CharacterInfo
           getVisionImgs={getVisionImgs}
           characterData={characterData}
+          modal={modal}
         />
       </Modal>
       <CharactersContainer

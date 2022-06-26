@@ -6,7 +6,21 @@
   margin-bottom: 10px;
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
 }
+
+.btns-container {
+  transition: all 0.3s;
+}
+
 @media only screen and (max-width: 730px) {
+  .btns-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .btns-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   .title {
     margin-top: auto;
     border-radius: 0;

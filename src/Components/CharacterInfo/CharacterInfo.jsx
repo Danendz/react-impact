@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import PagesHolder from "./PagesHolder/PagesHolder";
 import cl from "./CharacterInfo.module.css";
+import Loader from "../UI/Loader/Loader";
 import "./style/info.css";
 
 const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
@@ -11,6 +12,8 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     buttonsBgColor: "black",
   });
   const [vision, setVision] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const backImage = useRef();
   const pagesContainer = useRef();
 
   const reducer = (id, action) => {
@@ -96,47 +99,81 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     getVisionIcon();
   }, [characterData, getVisionImgs]);
 
+  useEffect(() => {
+    setIsLoaded(false);
+    const img = new Image();
+    function onImageLoad() {
+      setIsLoaded(true);
+    }
+    function imgErrorHandler() {
+      backImage.current.style.backgroundImage = `url(${characterData["gacha-splash"]})`;
+      setIsLoaded(true);
+    }
+
+    img.src = characterData["card"];
+    img.addEventListener("load", onImageLoad);
+    img.addEventListener("error", imgErrorHandler);
+    return () => {
+      img.removeEventListener("load", onImageLoad);
+      img.removeEventListener("load", imgErrorHandler);
+    };
+  }, [characterData]);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${characterData["card"]}), url(${characterData['gacha-splash']})`,
-      }}
-      className={cl.info}
-    >
+    <>
       <div
-        style={{
-          backgroundColor: bgColor.contentColor,
-          boxShadow: "0px 0px 59px 53px " + bgColor.boxShadowColor + " inset",
-        }}
-        className={cl.content}
+        style={isLoaded ? { display: "none" } : { display: "flex" }}
+        className={cl.loaderContainer}
       >
-        <p style={{ backgroundColor: bgColor.nameColor }} className={cl.name}>
-          <img className={cl.img} src={vision} alt="vision pic" />
-          {characterData["name"]}
-        </p>
-
-        <div>
-          <div ref={pagesContainer}>
-            <PagesHolder characterData={characterData} bgColor={bgColor} />
-          </div>
-          <button
-            style={{ backgroundColor: bgColor.buttonsBgColor }}
-            className={cl.btnLeft}
-            onClick={() => dispatch({ type: "prev" })}
-          >
-            Previous
-          </button>
-          <button
-            style={{ backgroundColor: bgColor.buttonsBgColor }}
-            className={cl.btnRight}
-            onClick={() => dispatch({ type: "next" })}
-          >
-            Next
-          </button>
+        <div className={cl.loader}>
+          <Loader />
         </div>
       </div>
-    </div>
+      <div
+        style={
+          isLoaded
+            ? {
+                display: "flex",
+                backgroundImage: `url(${characterData["card"]})`,
+              }
+            : { display: "none" }
+        }
+        className={cl.info}
+      >
+        <div
+          style={{
+            backgroundColor: bgColor.contentColor,
+            boxShadow: "0px 0px 59px 53px " + bgColor.boxShadowColor + " inset",
+          }}
+          className={cl.content}
+        >
+          <p style={{ backgroundColor: bgColor.nameColor }} className={cl.name}>
+            <img className={cl.img} src={vision} alt="vision pic" />
+            {characterData["name"]}
+          </p>
+
+          <div>
+            <div ref={pagesContainer}>
+              <PagesHolder characterData={characterData} bgColor={bgColor} />
+            </div>
+            <button
+              style={{ backgroundColor: bgColor.buttonsBgColor }}
+              className={cl.btnLeft}
+              onClick={() => dispatch({ type: "prev" })}
+            >
+              Previous
+            </button>
+            <button
+              style={{ backgroundColor: bgColor.buttonsBgColor }}
+              className={cl.btnRight}
+              onClick={() => dispatch({ type: "next" })}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

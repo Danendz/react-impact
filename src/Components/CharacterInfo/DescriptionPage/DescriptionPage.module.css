@@ -6,6 +6,8 @@
   padding: 10px;
   position: absolute;
   bottom: 160px;
+  overflow-y: auto;
+  max-height: 50vh;
   width: 100%;
 }
 @media only screen and (max-width: 730px) {
@@ -13,5 +15,6 @@
         position: relative;
         bottom: unset;
         margin-bottom: 10px;
+        max-height: 300px;
     }
 }

@@ -5,7 +5,9 @@
   background-position: center;
   width: 100%;
   height: inherit;
+  transition: .2s;
   border-radius: 20px;
+  z-index: -1;
 }
 
 .info p {
@@ -31,13 +33,14 @@
   top: 80%;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-.loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.loaderContainer{
   height: inherit;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
-
 .btnLeft,
 .btnRight {
   position: absolute;
@@ -62,6 +65,10 @@
 .btnLeft:hover,
 .btnRight:hover {
   background-color: rgba(141, 68, 173, 0.63) !important;
+}
+
+.pagesArr{
+  transition: .2s;
 }
 @media only screen and (max-width: 730px) {
   .info{

@@ -1,8 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
+import PagesHolder from "./PagesHolder/PagesHolder";
 import cl from "./CharacterInfo.module.css";
 import "./style/info.css";
-import PageWithButtonsMain from "./PageWithButtons/PageWithButtonsMain";
-import DescriptionPage from "./DescriptionPage/DescriptionPage";
 
 const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
   const [bgColor, setBgColor] = useState({
@@ -118,24 +117,8 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
 
         <div>
           <div ref={pagesContainer}>
-            <DescriptionPage
-              title={"Description"}
-              description={characterData.description}
-              bgColor={bgColor}
-            />
-            <PageWithButtonsMain
-              title={"Constellations"}
-              data={characterData.constellations}
-              bgColor={bgColor}
-            />
-            <PageWithButtonsMain
-              title={"Passive Talents"}
-              data={characterData.passiveTalents}
-              bgColor={bgColor}
-            />
-            <PageWithButtonsMain
-              title={"Skill Talents"}
-              data={characterData.skillTalents}
+            <PagesHolder
+              characterData={characterData}
               bgColor={bgColor}
             />
           </div>

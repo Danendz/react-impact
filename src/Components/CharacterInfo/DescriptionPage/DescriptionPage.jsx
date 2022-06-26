@@ -5,7 +5,7 @@ const DescriptionPage = ({ title, bgColor, description }) => {
     <div> 
   
       <div style={{backgroundColor: bgColor.nameColor}} className={cl.descriptionContainer}>
-        <p>{description}</p>
+        <p>{description ? description : 'Извините, но описание куда то ушло!'}</p>
       </div>
       <h2 style={{ backgroundColor: bgColor.buttonsBgColor }} className="title">
         {title}

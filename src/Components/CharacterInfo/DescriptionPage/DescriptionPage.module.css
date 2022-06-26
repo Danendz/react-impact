@@ -6,6 +6,7 @@
   padding: 10px;
   position: absolute;
   bottom: 160px;
+  width: 100%;
 }
 @media only screen and (max-width: 730px) {
     .descriptionContainer{

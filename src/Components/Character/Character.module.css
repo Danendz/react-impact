@@ -17,7 +17,7 @@
 
 .character_icon{
     width: 100px;
-    
+    height: 100px;
     -webkit-user-drag: none;
     user-select: none;
 }

@@ -11,8 +11,6 @@
 
 .modal_content {
   position: relative;
-  margin-left: 100px;
-  margin-right: 100px;
   background-color: white;
   border-radius: 20px;
   width: 540px;
@@ -28,6 +26,6 @@
 @media only screen and (max-width: 600px) {
   .modal_content {
     margin: 0 10px;
-    width: 100%;
+    margin-bottom: 100px;
   }
 }

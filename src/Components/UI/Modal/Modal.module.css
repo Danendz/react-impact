@@ -23,10 +23,10 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 730px) {
   .modal_content {
     margin: 0 10px;
-    height: 80vh;
-    margin-bottom: 30px;
+    height: 70vh;
+    margin-bottom: 100px;
   }
 }

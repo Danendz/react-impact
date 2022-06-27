@@ -28,6 +28,7 @@ export default class CharacterService {
     const characterData = await axios.get(link);
     characterData.data["card"] = link + "/card";
     characterData.data["gacha-splash"] = link + "/gacha-splash";
+    characterData.data["trueName"] = name;
     return characterData;
   }
 }

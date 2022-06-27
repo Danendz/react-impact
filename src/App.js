@@ -7,7 +7,10 @@ import Navigation from "./Components/Navigation/Navigation";
 
 const Home = loadable(() => import("./Components/Pages/Home"));
 const Characters = loadable(() => import("./Components/Pages/Characters"));
-
+const NotFoundPage = loadable(() => import("./Components/Pages/NotFoundPage"));
+const CharacterPage = loadable(() =>
+  import("./Components/Pages/CharacterPage")
+);
 const pages = [
   {
     path: "/",
@@ -27,9 +30,14 @@ function App() {
       <div className="App">
         <Navigation pages={pages} />
         <Routes>
-          {pages.map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
+          {pages.map(({ path, element, exact }) => (
+            <Route exact key={path} path={path} element={element} />
           ))}
+          <Route path="*" element={<NotFoundPage fallback={<Loader />} />} />
+          <Route
+            path="/characters/:name"
+            element={<CharacterPage fallback={<Loader />} />}
+          />
         </Routes>
       </div>
     </Router>

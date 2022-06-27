@@ -6,8 +6,8 @@
     flex-wrap: wrap;
     margin-top: 30px;
     justify-content: space-around;
-    
     margin-bottom: 30px;
+    max-width: 800px;
 }
 .characterNotFound{
     text-align: center;

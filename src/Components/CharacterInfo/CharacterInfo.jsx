@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import PagesHolder from "./PagesHolder/PagesHolder";
 import cl from "./CharacterInfo.module.css";
+import VisionHelper from "../Helpers/VisionHelper";
 import Loader from "../UI/Loader/Loader";
 import "./style/info.css";
 
-const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
+const CharacterInfo = ({ characterData, modal }) => {
   const [bgColor, setBgColor] = useState({
     contentColor: "black",
     nameColor: "black",
@@ -41,9 +42,6 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     currentId: 0,
   });
 
-  const getColorWithAlpha = async (color, alpha) => {
-    return `rgba(${color}, ${alpha})`;
-  };
 
   useEffect(() => {
     if (pagesContainer) {
@@ -59,20 +57,12 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
 
   useEffect(() => {
     async function getVisionBgColor() {
-      const colors = {
-        Cryo: "52, 152, 219",
-        Geo: "243, 157, 18",
-        Anemo: "46, 204, 112",
-        Electro: "156, 89, 182",
-        Pyro: "231, 77, 60",
-        Hydro: "41, 127, 185",
-      };
-      const currentVisionColor = colors[characterData["vision"]];
+      const currentVisionColor = characterData['vision']
 
-      const nameBgColor = await getColorWithAlpha(currentVisionColor, 0.6);
-      const contentBgColor = await getColorWithAlpha(currentVisionColor, 0.1);
-      const boxShadowBgColor = await getColorWithAlpha(currentVisionColor, 0.5);
-      const buttonsBgColor = await getColorWithAlpha(currentVisionColor, 0.7);
+      const nameBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.6);
+      const contentBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.1);
+      const boxShadowBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.5);
+      const buttonsBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.7);
 
       setBgColor(
         characterData["vision"]
@@ -92,12 +82,12 @@ const CharacterInfo = ({ characterData, getVisionImgs, modal }) => {
     const getVisionIcon = async () => {
       setVision(
         characterData["vision"]
-          ? await getVisionImgs(characterData["vision"])
+          ? await VisionHelper.getVisionImgs(characterData["vision"])
           : "#"
       );
     };
     getVisionIcon();
-  }, [characterData, getVisionImgs]);
+  }, [characterData]);
 
   useEffect(() => {
     setIsLoaded(false);

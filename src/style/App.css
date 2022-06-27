@@ -2,13 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
-html{
+html {
   background-color: #34495e;
 }
 #root {
-
   display: flex;
   color: white;
   justify-content: center;
@@ -16,12 +14,13 @@ html{
 }
 .App {
   width: 800px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
@@ -30,4 +29,9 @@ html{
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background: #8e44ad;
+}
+@media only screen and (max-width: 730px) {
+  .App{
+    /* margin-bottom: 50px; */
+  }
 }

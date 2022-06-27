@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import cl from "./Character.module.css";
-const Character = ({ name, icon, openModal }) => {
+const Character = ({ name, icon, openModal, isLoading }) => {
   const img = useRef();
 
   useEffect(() => {
-    const tempImg = img;
-    function handleError() {
-      const tempSrc = tempImg.current.src;
-      tempImg.current.src = tempSrc + "-big";
+    if(!isLoading){
+      const tempImg = img;
+      function handleError() {
+        const tempSrc = tempImg.current.src;
+        tempImg.current.src = tempSrc + "-big";
+      }
+      tempImg.current.addEventListener("error", handleError);
     }
-    tempImg.current.addEventListener("error", handleError);
-    return () => {
-      tempImg.current.removeEventListener("error", handleError);
-    };
-  }, [icon]);
+
+  }, [isLoading, icon]);
 
   return (
     <div onClick={() => openModal(name)} className={cl.character}>

@@ -42,7 +42,6 @@ const CharacterInfo = ({ characterData, modal }) => {
     currentId: 0,
   });
 
-
   useEffect(() => {
     if (pagesContainer) {
       const pagesArr = pagesContainer.current.children;
@@ -57,12 +56,24 @@ const CharacterInfo = ({ characterData, modal }) => {
 
   useEffect(() => {
     async function getVisionBgColor() {
-      const currentVisionColor = characterData['vision']
+      const currentVisionColor = characterData["vision"];
 
-      const nameBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.6);
-      const contentBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.1);
-      const boxShadowBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.5);
-      const buttonsBgColor = await VisionHelper.getColorWithAlpha(currentVisionColor, 0.7);
+      const nameBgColor = await VisionHelper.getColorWithAlpha(
+        currentVisionColor,
+        0.6
+      );
+      const contentBgColor = await VisionHelper.getColorWithAlpha(
+        currentVisionColor,
+        0.1
+      );
+      const boxShadowBgColor = await VisionHelper.getColorWithAlpha(
+        currentVisionColor,
+        0.5
+      );
+      const buttonsBgColor = await VisionHelper.getColorWithAlpha(
+        currentVisionColor,
+        0.7
+      );
 
       setBgColor(
         characterData["vision"]
@@ -92,15 +103,15 @@ const CharacterInfo = ({ characterData, modal }) => {
   useEffect(() => {
     setIsLoaded(false);
     const img = new Image();
-    const imgError = new Image()
+    const imgError = new Image();
     function onImageLoad() {
       setIsLoaded(true);
     }
     function imgErrorHandler() {
       backImage.current.style.backgroundImage = `url(${characterData["gacha-splash"]})`;
-      
-      imgError.src = characterData['gacha-splash']
-      imgError.addEventListener('load', onImageLoad)
+
+      imgError.src = characterData["gacha-splash"];
+      imgError.addEventListener("load", onImageLoad);
     }
 
     img.src = characterData["card"];
@@ -109,20 +120,14 @@ const CharacterInfo = ({ characterData, modal }) => {
     return () => {
       img.removeEventListener("load", onImageLoad);
       img.removeEventListener("error", imgErrorHandler);
-      imgError.removeEventListener("load", onImageLoad)
+      imgError.removeEventListener("load", onImageLoad);
     };
   }, [characterData]);
 
   return (
     <>
-      <div
-        style={isLoaded ? { display: "none" } : { display: "flex" }}
-        className={cl.loaderContainer}
-      >
-        <div className={cl.loader}>
-          <Loader />
-        </div>
-      </div>
+      <Loader style={isLoaded ? { display: "none" } : { display: "flex" }} />
+
       <div
         ref={backImage}
         style={

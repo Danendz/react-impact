@@ -32,6 +32,6 @@ html {
 }
 @media only screen and (max-width: 730px) {
   .App{
-    /* margin-bottom: 50px; */
+    margin-bottom: 50px;
   }
 }

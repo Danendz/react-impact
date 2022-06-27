@@ -53,8 +53,8 @@ const Characters = () => {
     
     return (
     <>
-      <button onClick={() => console.log(characters)}>get characters</button>
-      <h1 style={{ textAlign: "center" }}>Genshin impact characters</h1>
+      {/* <button onClick={() => console.log(characters)}>get characters</button> */}
+      <h1 style={{ textAlign: "center" }}>Characters</h1>
       <CharacterSearch query={query} setQuery={setQuery} />
       <Modal modal={modal} setModal={setModal}>
         <CharacterInfo

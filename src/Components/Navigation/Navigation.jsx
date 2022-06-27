@@ -20,14 +20,15 @@ function Navigation({ pages }) {
             key={path}
               className={(navdata) =>
                 navdata.isActive
-                  ? [cl.active, cl.link].join(" ")
-                  : [cl.link].join(" ")
+                  ? [cl.link, cl.active].join(" ")
+                  : [cl.link, cl.hover].join(" ")
               }
               to={path}
             >
-              <li>
+            
+              <button className={cl.btn}>
                 <i className={icon}></i>
-              </li>
+              </button>
             </NavLink>
           ))}
         </ul>

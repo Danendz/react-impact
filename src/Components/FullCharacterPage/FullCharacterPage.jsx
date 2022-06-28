@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import cl from "./FullCharacterPage.module.css";
 import CharacterImage from "./Components/CharacterImage/CharacterImage";
-import ContentContainer from "./Components/ContentContainer/ContentContainer";
-import basicInfo from "./content/basicInfo";
+import ContentContainerHandler from "./Components/ContentContainerHandler/ContentContainerHandler";
 import VisionHelper from "../Helpers/VisionHelper";
+import "./style/FullCharacterPage.css";
 
-const FullCharacterPage = ({ characterData }) => {
+const FullCharacterPage = ({
+  characterData,
+  characterMaterials,
+  talentBooks,
+}) => {
   const [visionImg, setVisionImg] = useState("");
   const [bgColor, setBgColor] = useState({
     nameColor: "black",
@@ -29,13 +33,9 @@ const FullCharacterPage = ({ characterData }) => {
     getVisionColor();
   }, [characterData]);
 
-  if(!characterData){
-    return(
-      <div>loading</div>
-    )
+  if (!characterData) {
+    return <div>loading</div>;
   }
-
-  
   return (
     <>
       <div className={cl.characterPage}>
@@ -44,17 +44,12 @@ const FullCharacterPage = ({ characterData }) => {
           bgColor={bgColor}
           characterData={characterData}
         />
-        <ContentContainer
-          title={'Basic information'}
-          content={basicInfo}
+        <ContentContainerHandler
+          visionImg={visionImg}
           bgColor={bgColor}
+          characterMaterials={characterMaterials}
           characterData={characterData}
-        />
-        <ContentContainer
-        title={'Constellations'}
-          content={characterData['constellations']}
-          isApiMap={true}
-          bgColor={bgColor}
+          characterBooks={talentBooks}
         />
       </div>
     </>

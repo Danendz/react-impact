@@ -10,12 +10,6 @@
   background-size: cover;
   box-shadow: 0 0 100px 50px #34495e inset;
 }
-.visionIcon {
-  width: 40px;
-  user-select: none;
-  -webkit-user-drag: none;
-  height: 40px;
-}
 .nameContainer {
   position: absolute;
   width: 100%;

@@ -6,6 +6,9 @@
   padding-bottom: 0px;
 }
 .contentContainer h2 {
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
   font-size: 34px;
   text-align: center;
   margin: 10px 0;
@@ -18,8 +21,18 @@
   margin: 10px 0 10px 0px;
 }
 
-
 .contentContainer p i {
     width: 15px;
     height: 15px;
+}
+
+.content{
+  max-height: 0;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.opened{
+  max-height: 500px;
+  overflow-y: scroll;
 }

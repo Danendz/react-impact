@@ -31,6 +31,7 @@
   height: 40px;
 }
 .nav_menu .btn {
+  width: 100%;
   border-radius: 10px;
   transition: 0.3s;
   padding: 5px;
@@ -40,7 +41,7 @@
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  color: #ecf0f1;
+  color: #9e9e9e;
   border: 0;
   z-index: 3;
 }
@@ -49,7 +50,7 @@ i {
   transition: 0.3s;
 }
 .nav_menu .hover:hover i{
-    color: #9b59b6;
+    color: #ecf0f1;
 }
 .homeLink {
   display: none;
@@ -61,7 +62,7 @@ i {
   transition: .5s;
 }
 .active i {
-  color: #9b59b6;
+  color: #ecf0f1;
 }
 
 .nav_logo:hover {
@@ -115,7 +116,7 @@ i {
   .nav_menu .hover:hover i {
     color: unset;
   }
-  .nav_menu .btn:active {
+  .nav_menu .btn:active  {
     user-select: none;
     background-color: rgba(0, 0, 0, 0.34);
   }

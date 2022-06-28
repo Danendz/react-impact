@@ -1,47 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import cl from "./ContentContainer.module.css";
 
-const ContentContainer = ({
-  bgColor,
-  characterData,
-  title,
-  isApiMap,
-  content,
-}) => {
-  if (isApiMap && content) {
-    return (
-      <>
-        <div className={cl.contentContainer}>
-          <h2 style={{ borderBottom: `2px solid ${bgColor.nameColor}` }}>
-            {title}
-          </h2>
-          {content.map(({ name, description }) => (
+const ContentContainer = ({ bgColor, title, children }) => {
+  const [open, setOpen] = useState(false);
 
-            <p key={name} style={{ backgroundColor: bgColor.nameColor, textAlign: 'center' }}>
-              <span style={{marginBottom: '15px'}}>{name}</span> <br /> <span >{description}</span>
-            </p>
-          ))}
-        </div>
-      </>
-    );
-  }
+  const toggleContent = () => {
+    setOpen(!open);
+  };
 
-  if (content) {
-    return (
-      <>
-        <div className={cl.contentContainer}>
-          <h2 style={{ borderBottom: `2px solid ${bgColor.nameColor}` }}>
-            {title}
-          </h2>
-          {content.map(({ name, description }) => (
-            <p key={name} style={{ backgroundColor: bgColor.nameColor }}>
-              {name}: {characterData[description]}
-            </p>
-          ))}
+  return (
+    <>
+      <div className={cl.contentContainer}>
+        <h2
+          onClick={() => toggleContent()}
+          style={{ borderBottom: `2px solid ${bgColor.nameColor}` }}
+        >
+          {title}
+          <i
+            style={{ marginLeft: "10px", fontSize: "30px" }}
+            className={
+              open ? "fa-solid fa-angle-up" : "fa-solid fa-chevron-down"
+            }
+          ></i>
+        </h2>
+        <div className={open ? [cl.content, cl.opened].join(" ") : cl.content}>
+          {children}
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 };
 
 export default ContentContainer;

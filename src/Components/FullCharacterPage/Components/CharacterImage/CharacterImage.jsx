@@ -44,7 +44,7 @@ const CharacterImage = ({ bgColor, characterData, visionImg }) => {
               className={cl.nameLine}
               style={{ backgroundColor: bgColor.nameColor }}
             >
-              <img className={cl.visionIcon} alt="Vision" src={visionImg}></img>
+              <img className="visionIcon" alt="Vision" src={visionImg}></img>
               <h2 className={cl.name}>{characterData.name}</h2>
             </div>
           </div>

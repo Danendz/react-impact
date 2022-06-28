@@ -1,0 +1,51 @@
+.characterContainer {
+  width: 100%;
+  box-shadow: 0 0 10px 15px rgba(0, 0, 0, 0.129);
+}
+.image {
+  align-items: flex-end;
+  width: 100%;
+  background-position: center;
+  height: 800px;
+  background-size: cover;
+  box-shadow: 0 0 100px 50px #34495e inset;
+}
+.visionIcon {
+  width: 40px;
+  user-select: none;
+  -webkit-user-drag: none;
+  height: 40px;
+}
+.nameContainer {
+  position: absolute;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.nameLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.nameLine h2 {
+  margin-left: 5px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  font-size: 40px;
+}
+.loaderContainer {
+  justify-content: center;
+  height: 800px;
+}
+@media only screen and (max-width: 730px) {
+  .image {
+    height: 100vh;
+  }
+
+  .loaderContainer {
+    height: 100vh;
+  }
+  .nameLine h2 {
+    font-size: 30px;
+  }
+}

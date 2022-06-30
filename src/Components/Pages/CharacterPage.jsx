@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, Navigate } from "react-router-dom";
+import getFilteredTalents from "../Helpers/getFilteredTalents";
+import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
 import FullCharacterPage from "../FullCharacterPage/FullCharacterPage";
 import Loader from "../UI/Loader/Loader";
@@ -7,70 +9,32 @@ import Loader from "../UI/Loader/Loader";
 const CharacterPage = () => {
   const { name } = useParams();
   const [characterData, setCharacterData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [talentsMaterials, setTalentsMaterials] = useState();
-  const [talentsBooks, setTalentsBooks] = useState();
+  const [talentMaterials, setTalentMaterials] = useState();
+  const [talentBooks, setTalentBooks] = useState();
 
-  const fetchCharacterData = useCallback(async () => {
-    let data;
-    try {
-      data = await CharacterService.getCharacterData(name);
-    } catch (e) {
-      return setIsError(true);
-    }
-    setCharacterData(data.data);
-  }, [name]);
+  const [fetchData, isLoading, error] = useFetching(async () => {
+    const characterData = await CharacterService.getCharacterData(name);
+    const talentMaterials = await CharacterService.getTalentMaterials();
+    const talentBooks = await CharacterService.getTalentBooks();
 
-  const fetchTalentsMarialsData = async () => {
-    let dataMaterials;
-    let dataBooks;
-    try {
-      dataMaterials = await CharacterService.getTalentsMaterials();
-      dataBooks = await CharacterService.getTalentsBooks();
-    } catch (e) {
-      console.log(e);
-    }
-    setTalentsMaterials(dataMaterials);
-    setTalentsBooks(dataBooks);
-  };
-
-  const getData = useCallback(async () => {
-    setIsLoading(true);
-    await fetchTalentsMarialsData();
-    await fetchCharacterData();
-
-    setIsLoading(false);
-  }, [fetchCharacterData]);
+    setCharacterData(characterData.data);
+    setTalentMaterials(talentMaterials);
+    setTalentBooks(talentBooks);
+  });
 
   useEffect(() => {
-    getData();
-  }, [name, getData]);
+    fetchData();
+  }, [name]);
 
+  const filteredTalentMaterials = useMemo(() => {
+    return getFilteredTalents.filteredTalentMaterials(talentMaterials, name);
+  }, [talentMaterials, name]);
 
-  const filteredTalentsMaterials = useMemo(() => {
-    if (talentsMaterials) {
-      return talentsMaterials.payload.talentMaterials.filter(
-        (element) =>
-          element.characters.filter((char) => char.name.toLowerCase() === name)
-            .length > 0
-      );
-    }
-    return talentsMaterials;
-  }, [talentsMaterials, name]);
+  const filteredTalentBooks = useMemo(() => {
+    return getFilteredTalents.filteredTalentBooks(talentBooks, name);
+  }, [talentBooks, name]);
 
-  const filteredTalentsBooks = useMemo(() => {
-    if (talentsBooks) {
-      return talentsBooks.payload.talentBooks.filter(
-        (element) =>
-          element.characters.filter((char) => char.name.toLowerCase() === name)
-            .length > 0
-      );
-    }
-    return talentsBooks;
-  }, [talentsBooks, name]);
-
-  if (isError) {
+  if (error) {
     return <Navigate to="/" />;
   }
 
@@ -80,8 +44,8 @@ const CharacterPage = () => {
   return (
     <>
       <FullCharacterPage
-        talentBooks={filteredTalentsBooks}
-        characterMaterials={filteredTalentsMaterials}
+        talentBooks={filteredTalentBooks}
+        characterMaterials={filteredTalentMaterials}
         characterData={characterData}
       />
     </>

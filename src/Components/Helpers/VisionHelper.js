@@ -17,11 +17,18 @@ const visions = {
 };
 
 export default class VisionHelper {
-  static async getColorWithAlpha(vision, alpha) {
+  static getColorWithAlpha(vision, alpha) {
     const currentVisionColor = colors[vision];
     return `rgba(${currentVisionColor}, ${alpha})`;
   }
-  static async getVisionImgs(currentVision) {
+  static getVisionIcon(currentVision) {
     return visions[currentVision];
+  }
+  static getAllVisionStats(currentVision, ...alpha) { 
+    const colors = alpha.map((value) => {
+      return this.getColorWithAlpha(currentVision, value)
+    });
+    const icon = this.getVisionIcon(currentVision)
+    return [icon, ...colors]
   }
 }

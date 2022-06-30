@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useImageLoad } from "../../../../hooks/useImageLoad";
 import Loader from "../../../UI/Loader/Loader";
 import cl from "./CharacterImage.module.css";
 const CharacterImage = ({ bgColor, characterData, visionImg }) => {
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(false);
-    const img = new Image();
-    function onImageLoad() {
-      setIsLoaded(true);
-    }
+  const [loadImage, isLoaded] = useImageLoad((characterData['gacha-splash']))
 
-    img.src = characterData["gacha-splash"];
-    img.addEventListener("load", onImageLoad);
-    return () => {
-      img.removeEventListener("load", onImageLoad);
-    };
+  useEffect(() => {
+    loadImage();
   }, [characterData]);
 
   return (

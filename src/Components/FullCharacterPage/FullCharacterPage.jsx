@@ -14,28 +14,19 @@ const FullCharacterPage = ({
   const [bgColor, setBgColor] = useState({
     nameColor: "black",
   });
+
   useEffect(() => {
-    const getVisionIcon = async () => {
-      setVisionImg(
-        characterData["vision"]
-          ? await VisionHelper.getVisionImgs(characterData["vision"])
-          : "#"
-      );
-    };
-    getVisionIcon();
-    const getVisionColor = async () => {
-      const nameBgColor = await VisionHelper.getColorWithAlpha(
+    const getVisionData = () => {
+      const [icon, nameBgColor] = VisionHelper.getAllVisionStats(
         characterData["vision"],
         0.7
       );
+      setVisionImg(icon);
       setBgColor({ nameColor: nameBgColor });
     };
-    getVisionColor();
+    getVisionData();
   }, [characterData]);
 
-  if (!characterData) {
-    return <div>loading</div>;
-  }
   return (
     <>
       <div className={cl.characterPage}>

@@ -6,6 +6,7 @@ import cl from "./ContentContainerHandler.module.css";
 import Loader from "../../../UI/Loader/Loader";
 import mainCharacterData from "../../content/mainCharacterData";
 import TalentMaterials from "./components/TalentsMaterials/TalentsMaterials";
+
 const ContentContainerHandler = ({ visionImg, bgColor, characterData, characterMaterials, characterBooks }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 

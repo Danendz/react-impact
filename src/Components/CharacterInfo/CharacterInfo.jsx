@@ -55,50 +55,29 @@ const CharacterInfo = ({ characterData, modal }) => {
   }, [modal]);
 
   useEffect(() => {
-    async function getVisionBgColor() {
-      const currentVisionColor = characterData["vision"];
+    const [
+      icon,
+      nameBgColor,
+      contentBgColor,
+      boxShadowBgColor,
+      buttonsBgColor,
+    ] = VisionHelper.getAllVisionStats(
+      characterData["vision"],
+      0.6,
+      0.1,
+      0.5,
+      0.7
+    );
 
-      const nameBgColor = await VisionHelper.getColorWithAlpha(
-        currentVisionColor,
-        0.6
-      );
-      const contentBgColor = await VisionHelper.getColorWithAlpha(
-        currentVisionColor,
-        0.1
-      );
-      const boxShadowBgColor = await VisionHelper.getColorWithAlpha(
-        currentVisionColor,
-        0.5
-      );
-      const buttonsBgColor = await VisionHelper.getColorWithAlpha(
-        currentVisionColor,
-        0.7
-      );
-
-      setBgColor(
-        characterData["vision"]
-          ? {
-              contentColor: contentBgColor,
-              nameColor: nameBgColor,
-              boxShadowColor: boxShadowBgColor,
-              buttonsBgColor: buttonsBgColor,
-            }
-          : {}
-      );
-    }
-    getVisionBgColor();
+    setBgColor({
+      contentColor: contentBgColor,
+      nameColor: nameBgColor,
+      boxShadowColor: boxShadowBgColor,
+      buttonsBgColor: buttonsBgColor,
+    });
+    setVision(icon)
   }, [characterData]);
 
-  useEffect(() => {
-    const getVisionIcon = async () => {
-      setVision(
-        characterData["vision"]
-          ? await VisionHelper.getVisionImgs(characterData["vision"])
-          : "#"
-      );
-    };
-    getVisionIcon();
-  }, [characterData]);
 
   useEffect(() => {
     setIsLoaded(false);

@@ -4,21 +4,21 @@ import CharacterService from "../API/CharacterService";
 import Modal from "../UI/Modal/Modal";
 import CharacterInfo from "../CharacterInfo/CharacterInfo";
 import CharacterSearch from "../CharacterSearch/CharacterSearch";
+import NotFoundPage from './NotFoundPage';
+import { useFetching } from "../../hooks/useFetching";
 
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
     const [characterData, setCharacterData] = useState([]);
     const [modal, setModal] = useState(false);
-    const [isCharactersLoading, setIsCharactersLoading] = useState(false);
     const [query, setQuery] = useState("");
-  
-    async function fetchCharacters() {
-      setIsCharactersLoading(true);
+
+    const [fetchCharacters, isLoading, error] = useFetching(async()=>{
       const charactersInfo = await CharacterService.getCharacters();
       setCharacters(charactersInfo);
-      setIsCharactersLoading(false);
-    }
+    })
+
   
     useEffect(() => {
       fetchCharacters();
@@ -40,6 +40,10 @@ const Characters = () => {
     }, [query, characters]);
     
     
+    if(error){
+      return <NotFoundPage />
+    }
+
     return (
     <>
       {/* <button onClick={() => console.log(characters)}>get characters</button> */}
@@ -52,7 +56,7 @@ const Characters = () => {
         />
       </Modal>
       <CharactersContainer
-        isLoading={isCharactersLoading}
+        isLoading={isLoading}
         openModal={modalOpen}
         characters={searchPost}
       />

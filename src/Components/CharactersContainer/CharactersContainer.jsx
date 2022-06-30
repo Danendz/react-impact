@@ -1,12 +1,15 @@
 import React from "react";
 import Character from "../Character/Character";
-import Loader from "../UI/Loader/Loader";
+import Container from "../UI/Container/Container";
 import cl from "./CharactersContainer.module.css";
 
-const CharactersContainer = ({ isLoading, characters, openModal }) => {
-  if (isLoading) {
-    return <Loader style={{ marginTop: 40 }} />;
-  }
+const CharactersContainer = ({
+  isLoading,
+  characters,
+  openModal,
+  className,
+  title,
+}) => {
   if (!characters.length) {
     return (
       <h1 className={cl.characterNotFound} style={{ marginTop: 40 }}>
@@ -16,11 +19,22 @@ const CharactersContainer = ({ isLoading, characters, openModal }) => {
   }
 
   return (
-    <div className={cl.charactersContainer}>
-      {characters.map(({ name, icon, data }, index) => (
-        <Character key={name} openModal={openModal} isLoading={isLoading} name={name} icon={icon} />
-      ))}
-    </div>
+    <Container style={{flexDirection: 'column'}}>
+      <Container style={{padding: 10, margin: 0}}>
+        <h1>{title}</h1>
+      </Container>
+      <Container className={className}>
+        {characters.map(({ name, icon, data }, index) => (
+          <Character
+            key={name}
+            openModal={openModal}
+            isLoading={isLoading}
+            name={name}
+            icon={icon}
+          />
+        ))}
+      </Container>
+    </Container>
   );
 };
 

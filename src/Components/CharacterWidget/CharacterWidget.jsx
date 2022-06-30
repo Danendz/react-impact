@@ -4,6 +4,7 @@ import CharacterInfo from "../CharacterInfo/CharacterInfo";
 
 import CharactersContainer from "../CharactersContainer/CharactersContainer";
 import Loader from "../UI/Loader/Loader";
+import Widget from "../Widget/Widget";
 
 const CharacterWidget = ({ characters, isLoading, className }) => {
   const [modal, setModal] = useState(false);
@@ -22,14 +23,13 @@ const CharacterWidget = ({ characters, isLoading, className }) => {
       <Modal modal={modal} setModal={setModal}>
         <CharacterInfo characterData={characterData} modal={modal} />
       </Modal>
-
-      <CharactersContainer
-        title={"Characters"}
-        className={className}
-        isLoading={isLoading}
-        openModal={modalOpen}
-        characters={characters}
-      />
+      <Widget className={className} title={'Characters'}>
+        <CharactersContainer
+          isLoading={isLoading}
+          openModal={modalOpen}
+          characters={characters}
+        />
+      </Widget>
     </>
   );
 };

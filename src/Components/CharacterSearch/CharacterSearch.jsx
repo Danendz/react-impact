@@ -1,10 +1,11 @@
 import React from "react";
 import cl from './CharacterSearch.module.css';
 
-const CharacterSearch = ({query, setQuery}) => {
+
+const CharacterSearch = (props) => {
     return(
         <div className={cl.characterSearch}>
-            <input value={query} onChange={(e)=> setQuery(e.target.value)} className={cl.input} type="text" placeholder="Введите имя персонажа" />
+            <input {...props} className={cl.input} type="text" placeholder="Введите имя персонажа" />
         </div>
     )
 }

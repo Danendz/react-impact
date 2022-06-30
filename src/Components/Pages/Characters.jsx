@@ -1,17 +1,23 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CharacterService from "../API/CharacterService";
-import CharacterSearch from "../CharacterSearch/CharacterSearch";
 import NotFoundPage from "./NotFoundPage";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterWidget from "../CharacterWidget/CharacterWidget";
+import { useCharacters } from "../../hooks/useCharacters";
+import CharactersFilter from "../CharactersFilter/CharactersFilter";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
-  const [query, setQuery] = useState("");
-
+  const [filter, setFilter] = useState({
+    query: '',
+    sort: 'name'
+  })
   const [fetchCharacters, isLoading, error] = useFetching(async () => {
     const charactersInfo = await CharacterService.getCharacters();
-    setCharacters(charactersInfo);
+   /*  console.log(charactersInfo); */
+   
+   setCharacters(charactersInfo);
+   
   });
 
   useEffect(() => {
@@ -19,24 +25,18 @@ const Characters = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filteredChars = useMemo(() => {
-    if (query) {
-      return characters.filter((char) =>
-        char.name.toLowerCase().includes(query.toLowerCase().trim())
-      );
-    }
-    return characters;
-  }, [query, characters]);
+  const filteredChars = useCharacters(characters, filter.sort,  filter.query);
 
   if (error) {
     return <NotFoundPage />;
   }
 
+  console.log(filteredChars)
   return (
     <>
       {/* <button onClick={() => console.log(characters)}>get characters</button> */}
       <h1 style={{ textAlign: "center" }}>Characters</h1>
-      <CharacterSearch query={query} setQuery={setQuery} />
+      <CharactersFilter characters={filteredChars} filter={filter} setFilter={setFilter} />
       <CharacterWidget characters={filteredChars} isLoading={isLoading} />
     </>
   );

@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
+html,body {
   background-color: #34495e;
 }
 #root {

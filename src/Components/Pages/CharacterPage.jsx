@@ -24,14 +24,16 @@ const CharacterPage = () => {
 
   useEffect(() => {
     fetchData();
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   const filteredTalentMaterials = useMemo(() => {
-    return getFilteredTalents.filteredTalentMaterials(talentMaterials, name);
+    return getFilteredTalents.filteredTalentsByName(talentMaterials, name);
   }, [talentMaterials, name]);
 
   const filteredTalentBooks = useMemo(() => {
-    return getFilteredTalents.filteredTalentBooks(talentBooks, name);
+    return getFilteredTalents.filteredTalentsByName(talentBooks, name);
   }, [talentBooks, name]);
 
   if (error) {

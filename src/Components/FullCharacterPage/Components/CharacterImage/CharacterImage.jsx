@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useImageLoad } from "../../../../hooks/useImageLoad";
 import Loader from "../../../UI/Loader/Loader";
 import cl from "./CharacterImage.module.css";
@@ -8,6 +8,7 @@ const CharacterImage = ({ bgColor, characterData, visionImg }) => {
 
   useEffect(() => {
     loadImage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characterData]);
 
   return (

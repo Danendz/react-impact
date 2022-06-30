@@ -1,2 +1,2 @@
 Fan made react site about genshin impact 
-react-impact.vercel.app
+<a href="react-impact.vercel.app">Link</a>

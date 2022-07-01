@@ -28,6 +28,7 @@
 
 .loaderContainer{
   height: inherit;
+  width: 100%;
   opacity: 1;
   display: flex;
   justify-content: center;

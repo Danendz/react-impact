@@ -1,8 +1,13 @@
 import React from "react";
 import Character from "../Character/Character";
+import Loader from "../UI/Loader/Loader";
 import cl from "./CharactersContainer.module.css";
 
 const CharactersContainer = ({ isLoading, characters, openModal }) => {
+
+  if(isLoading){
+    return <Loader />
+  }
 
   if (!characters.length) {
     return (
@@ -15,7 +20,7 @@ const CharactersContainer = ({ isLoading, characters, openModal }) => {
   return (
     <>
       {characters.map(({ name, icon, data }, index) => (
-        <>
+
           <Character
             key={name}
             openModal={openModal}
@@ -23,8 +28,9 @@ const CharactersContainer = ({ isLoading, characters, openModal }) => {
             name={name}
             icon={icon}
             rarity={data.rarity}
+            vision={data.vision}
           />
-        </>
+
       ))}
     </>
   );

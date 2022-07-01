@@ -9,8 +9,7 @@
     margin-bottom: 30px;
     width: 100%;
 }
-.home {
-    
+.home, .characterWidget{
     position: relative;
     flex-wrap: nowrap;
     overflow-y: hidden;
@@ -19,7 +18,9 @@
     margin-top: 10px;
     margin-bottom: 0;
  }
-  
+.characterWidget{
+    justify-content: flex-start;
+}
  @media only screen and (max-width: 765px){
     .home{
         justify-content: flex-start;

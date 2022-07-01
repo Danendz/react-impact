@@ -3,7 +3,6 @@ import Modal from "../UI/Modal/Modal";
 import CharacterInfo from "../CharacterInfo/CharacterInfo";
 
 import CharactersContainer from "../CharactersContainer/CharactersContainer";
-import Loader from "../UI/Loader/Loader";
 import Widget from "../Widget/Widget";
 
 const CharacterWidget = ({ characters, isLoading, className }) => {
@@ -15,20 +14,17 @@ const CharacterWidget = ({ characters, isLoading, className }) => {
     setCharacterData(findChar.data);
   }
 
-  if (isLoading) {
-    return <Loader />;
-  }
   return (
     <>
       <Modal modal={modal} setModal={setModal}>
         <CharacterInfo characterData={characterData} modal={modal} />
       </Modal>
-      <Widget className={className} title={'Characters'}>
-        <CharactersContainer
-          isLoading={isLoading}
-          openModal={modalOpen}
-          characters={characters}
-        />
+      <Widget className={className} title={"Characters"}>
+          <CharactersContainer
+            isLoading={isLoading}
+            openModal={modalOpen}
+            characters={characters}
+          />
       </Widget>
     </>
   );

@@ -5,7 +5,6 @@ const CharactersFilter = ({ filter, setFilter, characters }) => {
   return (
     <>
       <CharacterSearch
-        characters={characters}
         value={filter.query}
         onChange={(e) => setFilter({ ...filter, query: e.target.value })}
       />

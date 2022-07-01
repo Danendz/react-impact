@@ -31,7 +31,6 @@ const Characters = () => {
     return <NotFoundPage />;
   }
 
-  console.log(filteredChars)
   return (
     <>
       {/* <button onClick={() => console.log(characters)}>get characters</button> */}

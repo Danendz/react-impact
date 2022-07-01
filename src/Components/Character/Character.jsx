@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cl from "./Character.module.css";
-const Character = ({ name, icon, openModal, isLoading, rarity }) => {
-  
+import VisionHelper from '../Helpers/VisionHelper';
+const Character = ({ name, icon, openModal, isLoading, rarity, vision }) => {
+  const [visionIcon, setVisionIcon] = useState('')
   const img = useRef();
   useEffect(() => {
     if (!isLoading) {
@@ -15,10 +16,14 @@ const Character = ({ name, icon, openModal, isLoading, rarity }) => {
     }
   }, [isLoading, icon]);
 
+  useEffect(()=>{
+    setVisionIcon(VisionHelper.getVisionIcon(vision))
+  },[vision])
 
   return (
     <>
       <div onClick={() => openModal(name)} className={cl.character}>
+        <img className={cl.visionIcon} src={visionIcon} alt='vision' />
         <img
           style={
             rarity === 5

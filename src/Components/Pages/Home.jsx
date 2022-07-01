@@ -3,8 +3,9 @@ import CharacterWidget from "../CharacterWidget/CharacterWidget";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
 import NotFoundPage from "./NotFoundPage";
-import FarmingTalentsTodayWudget from "../FarmingTalentsTodayWidget/FarmingTalentsTodayWidget";
+import FarmingTalentsTodayWidget from "../FarmingTalentsTodayWidget/FarmingTalentsTodayWidget";
 import getFilteredTalents from "../Helpers/getFilteredTalents";
+import Loader from "../UI/Loader/Loader";
 const Home = () => {
   const [characters, setCharacters] = useState([]);
   const [talentBooks, setTalentBooks] = useState([]);
@@ -26,16 +27,19 @@ const Home = () => {
   if (error) {
     return <NotFoundPage />;
   }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <div style={{ width: "95%" }}>
         <CharacterWidget
-          className={"home"}
+          className={"characterWidget"}
           characters={characters}
-          isLoading={isLoading}
         />
-        <FarmingTalentsTodayWudget
-          isLoading
+        <FarmingTalentsTodayWidget
           title={"Books to farm today"}
           className={"home"}
           farmTalents={talentBooks}

@@ -12,9 +12,8 @@ const GachaContent = () => {
   const images = [eventCharacter, eventCharacterWeapon, standartBanner];
   const bannerRef = useRef();
   const [banner, setBanner] = useState(0);
-  const [fetchBannersImages, isLoaded] = useImageLoad(images[banner]);
+  const [fetchBannersImages, isLoaded] = useImageLoad(...images);
   useEffect(() => {
-    fetchBannersImages();
     bannerRef.current.style.transition = ".2s";
     bannerRef.current.style.opacity = 0;
     setTimeout(() => {
@@ -31,6 +30,12 @@ const GachaContent = () => {
       setIsAnimating(false);
     }
   }, [isAnimating]);
+
+  useEffect(()=>{
+    fetchBannersImages(); 
+  },[])
+
+
   return (
     <div className={cl.content}>
       <Loader style={isLoaded ? { display: "none" } : { display: "flex" }} />

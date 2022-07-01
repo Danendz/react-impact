@@ -1,7 +1,7 @@
 .buttons {
   border: 0;
   background-color: transparent;
-  width: 130px;
+  width: 110px;
   margin: 0 15px;
   transition: 0.3s;
   user-select: none;
@@ -9,6 +9,7 @@
   cursor: pointer;
 }
 .buttons img {
+  border-radius: 10px;
   width: 100%;
   user-select: none;
   -webkit-user-drag: none;

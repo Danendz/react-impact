@@ -16,14 +16,16 @@ const Gacha = () => {
   }, [video]);
 
   return (
+    <>
+    <h1 className={cl.notInLandscape}>Пожалуйста перевени свой телефон чтобы все заработало!</h1>
     <div className={cl.contentContainer}>
       {/* <button onClick={() => changeVideo()}>Change video</button> */}
-
       <video className={cl.gachaBackground} ref={videoRef} muted autoPlay loop>
         <source src={video} type="video/mp4" />
       </video>
       <GachaContent />
     </div>
+    </>
   );
 };
 

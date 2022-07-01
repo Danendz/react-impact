@@ -13,6 +13,7 @@ const Home = () => {
   const [fetchCharacters, isLoading, error] = useFetching(async () => {
     const charactersData = await CharacterService.getCharacters();
     const talentBooksData = await CharacterService.getTalentBooks();
+    
     const filteredBooks =
       getFilteredTalents.filteredTalentBooksToday(talentBooksData);
     setCharacters(charactersData.slice(0, 10));
@@ -34,7 +35,7 @@ const Home = () => {
 
   return (
     <>
-      <div style={{ width: "95%" }}>
+      <div style={{ width: "95%", maxWidth: '800px' }}>
         <CharacterWidget
           className={"characterWidget"}
           characters={characters}

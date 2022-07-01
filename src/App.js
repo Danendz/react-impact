@@ -11,6 +11,9 @@ const NotFoundPage = loadable(() => import("./Components/Pages/NotFoundPage"));
 const CharacterPage = loadable(() =>
   import("./Components/Pages/CharacterPage")
 );
+const GachaPage = loadable(() =>
+  import("./Components/Pages/GachaPage")
+);
 const pages = [
   {
     path: "/",
@@ -22,6 +25,11 @@ const pages = [
     element: <Characters fallback={<Loader />} />,
     icon: "fa-solid fa-user-group",
   },
+  {
+    path: "/gacha",
+    element: <GachaPage fallback={<Loader />} />,
+    icon: "fa-solid fa-circle-nodes"
+  }
 ];
 
 function App() {

@@ -1,23 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import backgroundVid from "../../Videos/backgroundCropped.mp4";
+import wish4star10 from "../../Videos/4star10comp.mp4";
+import backgroundHolder from "../../images/backgroundHolder.png";
 import cl from "./Gacha.module.css";
 import GachaContent from "./GachaContent/GachaContent";
+import Loader from "../UI/Loader/Loader";
 
 const Gacha = () => {
   const [video, setVideo] = useState(backgroundVid);
   const [isLoaded, setIsLoaded] = useState(false);
-  const videoRef = useRef(); /* 
-    const changeVideo = ()=>{
-        setVideo(video === video1 ? video2 : video1)
-    } */
+  const videoRef = useRef();
+  const changeVideo = () => {
+    setVideo(video === backgroundVid ? wish4star10 : backgroundVid);
+  };
 
   useEffect(() => {
-    setIsLoaded(false)
+    setIsLoaded(false);
     videoRef.current?.load();
-    videoRef.current.addEventListener('loadeddata', (e) => {
-        setIsLoaded(true)
-        console.log('loaded')
-    })
+    videoRef.current.addEventListener("loadeddata", (e) => {
+      setIsLoaded(true);
+      console.log("loaded");
+    });
   }, [video]);
 
   return (
@@ -26,8 +29,15 @@ const Gacha = () => {
         Пожалуйста перевени свой телефон чтобы все заработало!
       </h1>
       <div className={cl.contentContainer}>
-        {/* <button onClick={() => changeVideo()}>Change video</button> */}
+        
+        <img
+          className={cl.gachaBackground}
+          style={isLoaded ? { display: "none" } : { display: "block" }}
+          src={backgroundHolder}
+          alt="bg"
+        />
         <video
+          style={!isLoaded ? { display: "none" } : { display: "block" }}
           className={cl.gachaBackground}
           ref={videoRef}
           muted

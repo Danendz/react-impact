@@ -94,8 +94,9 @@ export default class CharacterService {
   static async getVideo(link){
     
     try{
-      const video = await axios.get(link)
-      return video;
+      const res = await fetch(link);
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
     }catch(e){
       console.log(e)
     }

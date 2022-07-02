@@ -33,7 +33,7 @@ const standartGacha = {
 
 const eventGacha = {
     event5: "arataki-itto",
-    event4: ["kuki-shinobu", "gorou", "chongyun"]
+    event4: ["gorou", "chongyun"]
 };
 export default class GachaCore {
     private static bannerType: string = 'event'
@@ -51,7 +51,7 @@ export default class GachaCore {
     public static getOneItem(): Array<String> {
 
 
-        const random: Number = this.getRandomNum(false, 50);
+        const random: Number = this.getRandomNum(false, 100);
         this.user4StarPity += 1;
         this.user5StarPity += 1;
 
@@ -113,7 +113,7 @@ export default class GachaCore {
         const random50 = Math.random() * 10;
         if (random50 >= 5) {
             this.isEvent5StarGuaruntee = true;
-            return this.getEvent5Star();
+            return this.getStandart5Star();
         } else {
             return eventGacha.event5
         }

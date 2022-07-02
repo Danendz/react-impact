@@ -91,7 +91,6 @@ const GachaContent = ({
     const weapon = itemsNames.map((name) =>
       weapons.find((char) => char.name === name)
     );
-
     const charsResult = chars.filter((char) => char !== undefined);
     const weaponResult = weapon.filter((weap) => weap !== undefined);
 

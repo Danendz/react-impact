@@ -34,15 +34,15 @@ const standartGacha = {
 };
 const eventGacha = {
     event5: "arataki-itto",
-    event4: ["kuki-shinobu", "gorou", "chongyun"]
+    event4: ["gorou", "chongyun"]
 };
 class GachaCore {
     static getOneItem() {
-        const random = this.getRandomNum(false, 50);
+        const random = this.getRandomNum(false, 100);
         this.user4StarPity += 1;
         this.user5StarPity += 1;
         if (this.user5StarPity >= 70) {
-            this.userIncreasingChance += 0.2;
+            this.userIncreasingChance += 0.1;
         }
         if (this.user5StarPity === this.Start5tity) {
             return ["5", this.get5star()];
@@ -90,7 +90,7 @@ class GachaCore {
         const random50 = Math.random() * 10;
         if (random50 >= 5) {
             this.isEvent5StarGuaruntee = true;
-            return this.getEvent5Star();
+            return this.getStandart5Star();
         }
         else {
             return eventGacha.event5;

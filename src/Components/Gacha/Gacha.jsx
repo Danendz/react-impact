@@ -12,7 +12,6 @@ import wish5Star10 from "../../Videos/5star10comp.mp4";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
 import Loader from "../UI/Loader/Loader";
-import Container from "../UI/Container/Container";
 
 const Gacha = () => {
   const [video, setVideo] = useState(backgroundVid);
@@ -21,6 +20,7 @@ const Gacha = () => {
   const [videoType, setVideoType] = useState("bg");
   const [isWishAnimationEnded, setIsWishAnimationEnded] = useState(false);
   const [isSkipVisible, setIsSkipVisible] = useState(false);
+  const [downloadedVids, setDownloadedVids] = useState([]);
   const videoRef = useRef();
 
   const wishVids = [
@@ -33,9 +33,12 @@ const Gacha = () => {
   ];
 
   const [fetchVideos, isLoading] = useFetching(async () => {
+    const downVids = []
     for (let i = 0; i < wishVids.length; i++) {
-      await CharacterService.getVideo(wishVids[i]);
+      const vid = await CharacterService.getVideo(wishVids[i])
+      downVids.push(vid)
     }
+    setDownloadedVids(downVids)
   });
 
   useEffect(() => {
@@ -44,15 +47,15 @@ const Gacha = () => {
 
   const changeVideo = useCallback(() => {
     const videos = {
-      bg: backgroundVid,
-      wish3Star1: wish3Star1,
-      wish4Star1: wish4Star1,
-      wish4Star10: wish4Star10,
-      wish5Star1: wish5Star1,
-      wish5Star10: wish5Star10,
+      bg: downloadedVids[0],
+      wish3Star1: downloadedVids[1],
+      wish4Star1: downloadedVids[2],
+      wish4Star10: downloadedVids[3],
+      wish5Star1: downloadedVids[4],
+      wish5Star10: downloadedVids[5],
     };
     setVideo(videos[videoType]);
-  }, [videoType]);
+  }, [videoType, downloadedVids]);
 
   useEffect(() => {
     if (isGaching) {
@@ -90,14 +93,19 @@ const Gacha = () => {
         Пожалуйста перевени свой телефон чтобы все заработало!
       </h1>
       <div className={cl.contentContainer}>
-        
         <Loader
           style={!isLoading ? { display: "none" } : { display: "flex" }}
         />
-        <h2 style={!isLoading ? { display: "none" } : { display: "block", width: '100%', textAlign: 'center' }}>
+        <h2
+          style={
+            !isLoading
+              ? { display: "none" }
+              : { display: "block", width: "100%", textAlign: "center" }
+          }
+        >
           В первый раз это занимает некоторое время на загрузку...
         </h2>
-        
+
         <div style={isLoading ? { display: "none" } : { display: "block" }}>
           <button
             onClick={() => {

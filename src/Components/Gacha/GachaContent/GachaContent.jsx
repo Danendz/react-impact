@@ -64,7 +64,6 @@ const GachaContent = ({
     fetchBannersImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const getOneItem = () => {
     const result = GachaCore.getOneItem();
     const itemRarity = result[0];

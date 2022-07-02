@@ -9,6 +9,9 @@ import wish4Star1 from "../../Videos/4star1comp.mp4";
 import wish4Star10 from "../../Videos/4star10comp.mp4";
 import wish5Star1 from "../../Videos/5star1comp.mp4";
 import wish5Star10 from "../../Videos/5star10comp.mp4";
+import { useFetching } from "../../hooks/useFetching";
+import CharacterService from "../API/CharacterService";
+import Loader from "../UI/Loader/Loader";
 
 const Gacha = () => {
   const [video, setVideo] = useState(backgroundVid);
@@ -18,6 +21,25 @@ const Gacha = () => {
   const [isWishAnimationEnded, setIsWishAnimationEnded] = useState(false);
   const [isSkipVisible, setIsSkipVisible] = useState(false);
   const videoRef = useRef();
+
+  const wishVids = [
+    backgroundVid,
+    wish3Star1,
+    wish4Star1,
+    wish4Star10,
+    wish5Star1,
+    wish5Star10,
+  ];
+
+  const [fetchVideos, isLoading] = useFetching(async () => {
+    for (let i = 0; i < wishVids.length; i++) {
+      await CharacterService.getVideo(wishVids[i]);
+    }
+  });
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
   const changeVideo = useCallback(() => {
     const videos = {
@@ -42,7 +64,7 @@ const Gacha = () => {
   useEffect(() => {
     setIsLoaded(false);
     videoRef.current?.load();
-    videoRef.current.volume = 0.3
+    videoRef.current.volume = 0.3;
     videoRef.current.addEventListener("loadeddata", (e) => {
       setIsLoaded(true);
     });
@@ -67,38 +89,43 @@ const Gacha = () => {
         Пожалуйста перевени свой телефон чтобы все заработало!
       </h1>
       <div className={cl.contentContainer}>
-        <button
-          onClick={() => {
-            setIsSkipVisible(false);
-            setIsWishAnimationEnded(true);
-          }}
-          className={cl.skipBtn}
-          style={isSkipVisible ? { display: "block" } : { display: "none" }}
-        >
-          Skip
-        </button>
-        <img
-          className={cl.gachaBackground}
-          style={isLoaded ? { display: "none" } : { display: "block" }}
-          src={backgroundHolder}
-          alt="bg"
+        <Loader
+          style={!isLoading ? { display: "none" } : { display: "flex" }}
         />
-        <video
-          onEnded={() => setIsWishAnimationEnded(true)}
-          style={!isLoaded ? { display: "none" } : { display: "block" }}
-          className={cl.gachaBackground}
-          ref={videoRef}
-          autoPlay
-          loop={isGaching ? false : true}
-        >
-          <source src={video} type="video/mp4" />
-        </video>
-        <GachaContent
-          isWishAnimationEnded={isWishAnimationEnded}
-          setVideoType={setVideoType}
-          isGaching={isGaching}
-          setIsGaching={setIsGaching}
-        />
+        <div style={isLoading ? { display: "none" } : { display: "block" }}>
+          <button
+            onClick={() => {
+              setIsSkipVisible(false);
+              setIsWishAnimationEnded(true);
+            }}
+            className={cl.skipBtn}
+            style={isSkipVisible ? { display: "block" } : { display: "none" }}
+          >
+            Skip
+          </button>
+          <img
+            className={cl.gachaBackground}
+            style={isLoaded ? { display: "none" } : { display: "block" }}
+            src={backgroundHolder}
+            alt="bg"
+          />
+          <video
+            onEnded={() => setIsWishAnimationEnded(true)}
+            style={!isLoaded ? { display: "none" } : { display: "block" }}
+            className={cl.gachaBackground}
+            ref={videoRef}
+            autoPlay
+            loop={isGaching ? false : true}
+          >
+            <source src={video} type="video/mp4" />
+          </video>
+          <GachaContent
+            isWishAnimationEnded={isWishAnimationEnded}
+            setVideoType={setVideoType}
+            isGaching={isGaching}
+            setIsGaching={setIsGaching}
+          />
+        </div>
       </div>
     </>
   );

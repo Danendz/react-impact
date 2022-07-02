@@ -91,4 +91,13 @@ export default class CharacterService {
       console.log(e);
     }
   }
+  static async getVideo(link){
+    
+    try{
+      const video = await axios.get(link)
+      return video;
+    }catch(e){
+      console.log(e)
+    }
+  }
 }

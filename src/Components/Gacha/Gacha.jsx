@@ -42,6 +42,7 @@ const Gacha = () => {
   useEffect(() => {
     setIsLoaded(false);
     videoRef.current?.load();
+    videoRef.current.volume = 0.3
     videoRef.current.addEventListener("loadeddata", (e) => {
       setIsLoaded(true);
     });

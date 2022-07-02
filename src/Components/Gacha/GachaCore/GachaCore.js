@@ -42,7 +42,7 @@ class GachaCore {
         this.user4StarPity += 1;
         this.user5StarPity += 1;
         if (this.user5StarPity >= 70) {
-            this.userIncreasingChance += 0.1;
+            this.userIncreasingChance += 0.2;
         }
         if (this.user5StarPity === this.Start5tity) {
             return ["5", this.get5star()];

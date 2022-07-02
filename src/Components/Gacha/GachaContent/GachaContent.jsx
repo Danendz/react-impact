@@ -6,7 +6,7 @@ import standartBanner from "../../../images/standartBanner.png";
 import GachaButtons from ".././GachaButtons/GachaButtons";
 import { useImageLoad } from "../../../hooks/useImageLoad";
 import Loader from "../../UI/Loader/Loader";
-import GachaCore from "../GachaCore/GachaCore.js";
+import GachaCore from "../GachaCore/GachaCore.ts";
 
 import { useFetching } from "../../../hooks/useFetching";
 import CharacterService from "../../API/CharacterService";

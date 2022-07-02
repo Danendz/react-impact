@@ -12,6 +12,7 @@ import wish5Star10 from "../../Videos/5star10comp.mp4";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
 import Loader from "../UI/Loader/Loader";
+import Container from "../UI/Container/Container";
 
 const Gacha = () => {
   const [video, setVideo] = useState(backgroundVid);
@@ -89,9 +90,14 @@ const Gacha = () => {
         Пожалуйста перевени свой телефон чтобы все заработало!
       </h1>
       <div className={cl.contentContainer}>
+        
         <Loader
           style={!isLoading ? { display: "none" } : { display: "flex" }}
         />
+        <h2 style={!isLoading ? { display: "none" } : { display: "block", width: '100%', textAlign: 'center' }}>
+          В первый раз это занимает некоторое время на загрузку...
+        </h2>
+        
         <div style={isLoading ? { display: "none" } : { display: "block" }}>
           <button
             onClick={() => {

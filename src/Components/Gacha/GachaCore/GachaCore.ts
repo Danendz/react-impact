@@ -137,7 +137,7 @@ export default class GachaCore {
     }
 
     private static getEvent4Star(random: Number): String {
-        if (random <= this.chanceToWin4Star) {
+        if (random <= this.chanceToWin4Star || this.isEvent4StarGuaruntee) {
             if (this.isEvent4StarGuaruntee) {
                 this.isEvent4StarGuaruntee = false;
                 const event4: Array<string> = eventGacha.event4;
@@ -146,6 +146,7 @@ export default class GachaCore {
             this.isEvent4StarGuaruntee = true;
             return this.getStandart4Star();
         } else {
+            this.isEvent4StarGuaruntee = true;
             return standartGacha.weaponStandart4[0]
         }
     }

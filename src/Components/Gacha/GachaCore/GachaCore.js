@@ -112,7 +112,7 @@ class GachaCore {
         }
     }
     static getEvent4Star(random) {
-        if (random <= this.chanceToWin4Star) {
+        if (random <= this.chanceToWin4Star || this.isEvent4StarGuaruntee) {
             if (this.isEvent4StarGuaruntee) {
                 this.isEvent4StarGuaruntee = false;
                 const event4 = eventGacha.event4;
@@ -122,6 +122,7 @@ class GachaCore {
             return this.getStandart4Star();
         }
         else {
+            this.isEvent4StarGuaruntee = true;
             return standartGacha.weaponStandart4[0];
         }
     }

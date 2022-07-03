@@ -1,4 +1,11 @@
 .gachaBackground {
   position: relative;
   width: 100%;
+  border-radius: 15px;
+}
+
+@media only screen and (max-width: 960px) {
+  .gachaBackground{
+    border-radius: 0;
+  }
 }

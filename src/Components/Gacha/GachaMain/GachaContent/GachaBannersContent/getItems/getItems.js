@@ -19,6 +19,6 @@ export const getItems = (amountItems, weapons, characters) => {
   );
   const charsResult = chars.filter((char) => char !== undefined);
   const weaponResult = weapon.filter((weap) => weap !== undefined);
-
+  console.log([...charsResult, ...weaponResult])
   return [[...charsResult, ...weaponResult], videoType];
 };

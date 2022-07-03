@@ -51,7 +51,7 @@ export default class GachaCore {
     public static getOneItem(): Array<String> {
 
 
-        const random: Number = this.getRandomNum(false, 100);
+        const random: Number = this.getRandomNum(false, 50);
         this.user4StarPity += 1;
         this.user5StarPity += 1;
 

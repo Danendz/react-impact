@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import CharacterService from "../API/CharacterService";
 import NotFoundPage from "./NotFoundPage";
 import { useFetching } from "../../hooks/useFetching";
-import CharacterWidget from "../CharacterWidget/CharacterWidget";
+import CharacterWidget from "../CharacterComponent/CharacterWidget/CharacterWidget";
 import { useCharacters } from "../../hooks/useCharacters";
-import CharactersFilter from "../CharactersFilter/CharactersFilter";
+import CharactersFilter from "../CharacterComponent/CharactersFilter/CharactersFilter";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);

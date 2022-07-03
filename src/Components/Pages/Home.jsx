@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CharacterWidget from "../CharacterWidget/CharacterWidget";
+import CharacterWidget from "../CharacterComponent/CharacterWidget/CharacterWidget";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
 import NotFoundPage from "./NotFoundPage";
@@ -13,7 +13,7 @@ const Home = () => {
   const [fetchCharacters, isLoading, error] = useFetching(async () => {
     const charactersData = await CharacterService.getCharacters();
     const talentBooksData = await CharacterService.getTalentBooks();
-    
+
     const filteredBooks =
       getFilteredTalents.filteredTalentBooksToday(talentBooksData);
     setCharacters(charactersData.slice(0, 10));
@@ -35,14 +35,14 @@ const Home = () => {
 
   return (
     <>
-      <div style={{ width: "95%", maxWidth: '800px' }}>
+      <div style={{ width: "95%", maxWidth: "800px" }}>
         <CharacterWidget
           className={"characterWidget"}
           characters={characters}
         />
         <FarmingTalentsTodayWidget
           title={"Books to farm today"}
-          className={"home"}
+          className={"characterWidget"}
           farmTalents={talentBooks}
         />
       </div>

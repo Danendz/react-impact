@@ -3,7 +3,7 @@ import ContentContainer from "../ContentContainer/ContentContainer";
 import ItemContainer from "./components/Item/ItemContainer/ItemContainer";
 import basicInfo from "../../content/basicInfo";
 import cl from "./ContentContainerHandler.module.css";
-import Loader from "../../../UI/Loader/Loader";
+import Loader from "../../../../UI/Loader/Loader";
 import mainCharacterData from "../../content/mainCharacterData";
 import TalentMaterials from "./components/TalentsMaterials/TalentsMaterials";
 

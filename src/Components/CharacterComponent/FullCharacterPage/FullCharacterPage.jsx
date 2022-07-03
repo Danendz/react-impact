@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cl from "./FullCharacterPage.module.css";
 import CharacterImage from "./Components/CharacterImage/CharacterImage";
 import ContentContainerHandler from "./Components/ContentContainerHandler/ContentContainerHandler";
-import VisionHelper from "../Helpers/VisionHelper";
+import VisionHelper from "../../Helpers/VisionHelper";
 import "./style/FullCharacterPage.css";
 
 const FullCharacterPage = ({

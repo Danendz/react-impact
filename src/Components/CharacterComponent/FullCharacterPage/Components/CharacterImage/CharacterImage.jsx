@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useImageLoad } from "../../../../hooks/useImageLoad";
-import Loader from "../../../UI/Loader/Loader";
+import { useImageLoad } from "../../../../../hooks/useImageLoad";
+import Loader from "../../../../UI/Loader/Loader";
 import cl from "./CharacterImage.module.css";
 const CharacterImage = ({ bgColor, characterData, visionImg }) => {
 

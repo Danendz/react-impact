@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ModalButtons from "../../../UI/ModalButtons/ModalButtons";
+import ModalButtons from "../../../../UI/ModalButtons/ModalButtons";
 import ConstellationBody from "./PageWithButtonsBody/PageWithButtonsBody";
 import '../../style/info.css';
 

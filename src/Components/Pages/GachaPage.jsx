@@ -3,7 +3,7 @@ import Gacha from "../Gacha/Gacha";
 const GachaPage = () => {
 
     return(
-        <div style={{width: '100%'}}>
+        <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
             <Gacha />
         </div>
     )

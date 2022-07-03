@@ -3,7 +3,7 @@ import { useParams, Navigate } from "react-router-dom";
 import getFilteredTalents from "../Helpers/getFilteredTalents";
 import { useFetching } from "../../hooks/useFetching";
 import CharacterService from "../API/CharacterService";
-import FullCharacterPage from "../FullCharacterPage/FullCharacterPage";
+import FullCharacterPage from "../CharacterComponent/FullCharacterPage/FullCharacterPage";
 import Loader from "../UI/Loader/Loader";
 
 const CharacterPage = () => {

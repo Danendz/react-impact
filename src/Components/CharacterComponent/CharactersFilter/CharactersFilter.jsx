@@ -1,6 +1,6 @@
 import React from "react";
 import CharacterSearch from "../CharacterSearch/CharacterSearch";
-import MySelect from "../UI/MySelect/MySelect";
+import MySelect from "../../UI/MySelect/MySelect";
 const CharactersFilter = ({ filter, setFilter, characters }) => {
   return (
     <>

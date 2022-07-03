@@ -1,6 +1,6 @@
 import React from "react";
 import Character from "../Character/Character";
-import Loader from "../UI/Loader/Loader";
+import Loader from "../../UI/Loader/Loader";
 import cl from "./CharactersContainer.module.css";
 
 const CharactersContainer = ({ isLoading, characters, openModal }) => {

@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import PagesHolder from "./PagesHolder/PagesHolder";
 import cl from "./CharacterInfo.module.css";
-import VisionHelper from "../Helpers/VisionHelper";
-import Loader from "../UI/Loader/Loader";
+import VisionHelper from "../../Helpers/VisionHelper";
+import Loader from "../../UI/Loader/Loader";
 import "./style/info.css";
 
 const CharacterInfo = ({ characterData, modal }) => {

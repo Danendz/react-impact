@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Modal from "../UI/Modal/Modal";
+import Modal from "../../UI/Modal/Modal";
 import CharacterInfo from "../CharacterInfo/CharacterInfo";
 
 import CharactersContainer from "../CharactersContainer/CharactersContainer";
-import Widget from "../Widget/Widget";
+import Widget from "../../Widget/Widget";
 
 const CharacterWidget = ({ characters, isLoading, className }) => {
   const [modal, setModal] = useState(false);

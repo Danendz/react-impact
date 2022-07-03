@@ -1,4 +1,4 @@
-import GachaCore from "../../../../GachaCore/GachaCore";
+import GachaCore from "../../../../GachaCore/GachaCore.ts";
 export const getItems = (amountItems, weapons, characters) => {
   let items;
   if (amountItems === 10) {

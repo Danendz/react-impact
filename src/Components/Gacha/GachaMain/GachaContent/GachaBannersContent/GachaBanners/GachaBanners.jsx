@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import cl from "./GachaBanners.module.css";
-import GachaCore from "../../../../GachaCore/GachaCore";
+import GachaCore from "../../../../GachaCore/GachaCore.ts";
 import GachaButtons from "./GachaButtons/GachaButtons";
 
 const GachaBanners = ({ images, isLoading }) => {

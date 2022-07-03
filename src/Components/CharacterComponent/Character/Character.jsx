@@ -16,14 +16,14 @@ const Character = ({ name, icon, openModal, isLoading, rarity, vision }) => {
     }
   }, [isLoading, icon]);
 
-  useEffect(()=>{
+/*   useEffect(()=>{
     setVisionIcon(VisionHelper.getVisionIcon(vision))
-  },[vision])
+  },[vision]) */
 
   return (
     <>
       <div onClick={() => openModal(name)} className={cl.character}>
-        <img className={cl.visionIcon} src={visionIcon} alt='vision' />
+        {/* <img className={cl.visionIcon} src={visionIcon} alt='vision' /> */}
         <img
           style={
             rarity === 5

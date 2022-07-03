@@ -21,7 +21,7 @@ const CharacterWidget = ({ characters, isLoading, className }) => {
       </Modal>
       <Widget className={className} title={"Characters"}>
           <CharactersContainer
-            isLoading={isLoading}
+            isLoadingData={isLoading}
             openModal={modalOpen}
             characters={characters}
           />

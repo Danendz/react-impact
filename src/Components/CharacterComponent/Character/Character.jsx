@@ -1,24 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import cl from "./Character.module.css";
-import VisionHelper from '../../Helpers/VisionHelper';
-const Character = ({ name, icon, openModal, isLoading, rarity, vision }) => {
-  const [visionIcon, setVisionIcon] = useState('')
+
+const Character = ({ name, icon, openModal, rarity }) => {
+  /* const [visionIcon, setVisionIcon] = useState(""); */
   const img = useRef();
   useEffect(() => {
-    if (!isLoading) {
-      const tempImg = img;
-
-      function handleError() {
-        const tempSrc = tempImg.current.src;
-        tempImg.current.src = tempSrc + "-big";
-      }
-      tempImg.current.addEventListener("error", handleError);
+    const tempImg = img;
+    function handleError() {
+      const tempSrc = tempImg.current.src;
+      tempImg.current.src = tempSrc + "-big";
     }
-  }, [isLoading, icon]);
+    tempImg.current.addEventListener("error", handleError);
+  }, [icon]);
 
-/*   useEffect(()=>{
-    setVisionIcon(VisionHelper.getVisionIcon(vision))
-  },[vision]) */
 
   return (
     <>

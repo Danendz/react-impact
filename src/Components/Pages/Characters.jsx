@@ -14,8 +14,6 @@ const Characters = () => {
   });
   const [fetchCharacters, isLoading, error] = useFetching(async () => {
     const charactersInfo = await CharacterService.getCharacters();
-    /*  console.log(charactersInfo); */
-
     setCharacters(charactersInfo);
   });
 

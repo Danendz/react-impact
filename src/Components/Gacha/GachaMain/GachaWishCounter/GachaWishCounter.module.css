@@ -65,7 +65,7 @@
 
 @media only screen and (max-width: 960px) {
   .wishCounterContainer {
-    top: 10px;
+    top: 5px;
     right: 20px;
   }
 }

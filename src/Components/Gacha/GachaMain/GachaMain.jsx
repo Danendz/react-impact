@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import GachaContent from "./GachaContent/GachaContent";
 import cl from "./GachaMain.module.css";
 import GachaVideo from "./GachaVideo/GachaVideo";
+import GachaWishCounter from "./GachaWishCounter/GachaWishCounter";
 
 const GachaMain = ({ downloadedVids }) => {
   const [video, setVideo] = useState(downloadedVids[0]);
@@ -39,7 +40,7 @@ const GachaMain = ({ downloadedVids }) => {
 
   return (
     <div className={cl.contentContainer}>
-      <div>
+      <div style={{positin: 'relative'}}>
         <GachaVideo
           video={video}
           isGaching={isGaching}
@@ -50,6 +51,9 @@ const GachaMain = ({ downloadedVids }) => {
           setVideoType={setVideoType}
           isGaching={isGaching}
           setIsGaching={setIsGaching}
+        />
+        <GachaWishCounter
+          isGaching={isGaching}
         />
       </div>
     </div>

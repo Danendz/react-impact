@@ -3,7 +3,7 @@ import cl from "./GachaBanners.module.css";
 import GachaCore from "../../../../GachaCore/GachaCore.ts";
 import GachaButtons from "./GachaButtons/GachaButtons";
 
-const GachaBanners = ({ images, isLoading }) => {
+const GachaBanners = ({ images }) => {
   const bannerRef = useRef();
   const [banner, setBanner] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);

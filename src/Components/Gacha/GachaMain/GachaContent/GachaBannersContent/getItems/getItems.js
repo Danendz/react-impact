@@ -32,7 +32,7 @@ const takeWishes = (cost) => {
   const totalWishes = Wishes.get();
 
   if(cost > totalWishes * 160){
-    cost -= totalWishes;
+    cost -= totalWishes * 160;
     Wishes.remove(totalWishes)
     Primogems.remove(cost)
   }else{

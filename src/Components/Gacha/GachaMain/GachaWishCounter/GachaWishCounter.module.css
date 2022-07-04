@@ -3,69 +3,14 @@
   top: 30px;
   right: 60px;
   display: flex;
-  gap: 25px;
-}
-
-.primogems,
-.wishes {
-  padding: 0px 7px;
-  text-align: end;
   font-size: 18px;
-  border-radius: 15px;
-
-  width: fit-content;
-  background-color: rgba(0, 0, 0, 0.411);
-  user-select: none;
-}
-
-.primogems {
-  user-select: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-
-  text-align: center;
-}
-
-.primogems span {
-  margin-right: 20px;
-}
-
-.primogems::after {
-  content: "+";
-  position: absolute;
-  font-weight: 900;
-  display: flex;
-  font-size: 25px;
-  justify-content: center;
-  align-items: center;
-  right: 2px;
-  text-align: center;
-  width: 20px;
-  top: 3px;
-  height: 19px;
-  border-radius: 50%;
-  color: black;
-  background-color: white;
-}
-
-.wishes {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.wishIcon {
-  width: 25px;
-  height: 25px;
+  gap: 25px;
 }
 
 @media only screen and (max-width: 960px) {
   .wishCounterContainer {
     top: 5px;
     right: 20px;
+    font-size: 15px;
   }
 }

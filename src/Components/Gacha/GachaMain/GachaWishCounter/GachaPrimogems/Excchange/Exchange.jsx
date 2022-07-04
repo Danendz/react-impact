@@ -32,6 +32,7 @@ const Exchange = ({ setPrimogems, setModal, modal }) => {
 
   const confirmValue = () => {
     setPrimogems(Primogems.get() + exchangeValue);
+    Primogems.add(exchangeValue)
     GenesisCrystals.remove(exchangeValue);
     setModal(false);
   };

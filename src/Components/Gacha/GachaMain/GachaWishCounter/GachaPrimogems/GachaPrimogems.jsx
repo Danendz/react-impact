@@ -6,17 +6,13 @@ import Exchange from "./Excchange/Exchange";
 import cl from "./GachaPrimogems.module.css";
 
 const GachaPrimogems = ({ isGaching }) => {
-  const [primogems, setPrimogems] = useState(0);
+  const [primogems, setPrimogems] = useState(Primogems.get());
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
     setPrimogems(Primogems.get());
   }, [isGaching]);
 
-/*   useEffect(()=> {
-    setModal(false)
-  }, [primogems])
- */
   return (
     <>
       <GachaModal setModal={setModal} modal={modal}>

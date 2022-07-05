@@ -1,9 +1,14 @@
 import React from "react";
-
+import cl from "./GachaShopContent.module.css";
 const GachaShopContent = () => {
-    return(
+  return (
+    <>
+      <div className={cl.shopContent}>
         <p>Shop content</p>
-    )
-}
+      </div>
+      <div className={cl.shop}>hello</div>
+    </>
+  );
+};
 
-export default GachaShopContent
+export default GachaShopContent;

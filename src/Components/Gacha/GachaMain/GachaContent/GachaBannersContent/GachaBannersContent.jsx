@@ -62,7 +62,7 @@ const GachaBannersContent = ({
       className={cl.content}
     >
       <GachaTempModal modal={notEnoughCurrencies}>
-        <p>У вас недостаточно молитв!</p>
+        <p style={{color: 'white'}}>У вас недостаточно молитв!</p>
       </GachaTempModal>
       <div className={cl.banners}>
         <GachaBanners setChangeBanner={setChangeBanner} images={bannerImages} />

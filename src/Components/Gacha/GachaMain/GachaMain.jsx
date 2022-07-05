@@ -41,7 +41,7 @@ const GachaMain = ({ downloadedVids }) => {
 
   return (
     <div className={cl.contentContainer}>
-      <div style={{positin: 'relative'}}>
+      <div style={{position: 'relative', height: '100%'}}>
         <GachaVideo
           video={video}
           isGaching={isGaching}
@@ -58,7 +58,7 @@ const GachaMain = ({ downloadedVids }) => {
         changeBanner={changeBanner}
           isGaching={isGaching}
         />
-        <GachaShop />
+        <GachaShop isGaching={isGaching} />
       </div>
     </div>
   );

@@ -8,8 +8,8 @@
   align-items: flex-end;
   flex-wrap: wrap;
 
-  gap: 25px;
-  right: 0;
+  gap: 20px;
+  right: -13px;
   width: 81%;
 }
 

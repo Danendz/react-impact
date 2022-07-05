@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import GachaModal from "../../../../UI/GachaModal/GachaModal";
-import { Primogems } from "../../../GachaCore/GachaСurrencies.ts";
 import primogem from "../../images/wish_Primogem.png";
 import Exchange from "./Excchange/Exchange";
 import cl from "./GachaPrimogems.module.css";
@@ -16,7 +15,7 @@ const GachaPrimogems = ({
 
   useEffect(() => {
     setPrimogems(primogems);
-  }, [primogems]);
+  }, [primogems, isGaching]);
 
   return (
     <>

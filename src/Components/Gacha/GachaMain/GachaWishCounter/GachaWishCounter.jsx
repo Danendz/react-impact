@@ -4,11 +4,11 @@ import cl from './GachaWishCounter.module.css'
 import GachaWishes from "./GachaWishes/GachaWishes";
 
 
-const GachaWishCounter = ({isGaching}) => {
+const GachaWishCounter = ({isGaching, changeBanner}) => {
     return(
         <div style={isGaching ? {display: 'none'} : {display: 'flex'}} className={cl.wishCounterContainer}>
            <GachaPrimogems isGaching={isGaching}/>
-           <GachaWishes isGaching={isGaching}/>
+           <GachaWishes changeBanner={changeBanner} isGaching={isGaching}/>
         </div>
     )
 }

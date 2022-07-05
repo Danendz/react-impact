@@ -84,6 +84,10 @@ export default class GachaCore {
         this.bannerType = banner;
     }
 
+    public static getBannerType(): string{
+        return this.bannerType;
+    }
+
     public static getTenItems(): Array<Array<String>> {
         const result: Array<Array<String>> = [];
         for (let i = 1; i <= 10; i++) {

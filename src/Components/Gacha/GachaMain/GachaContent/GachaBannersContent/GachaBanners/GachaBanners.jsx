@@ -3,14 +3,15 @@ import cl from "./GachaBanners.module.css";
 import GachaCore from "../../../../GachaCore/GachaCore.ts";
 import GachaButtons from "./GachaButtons/GachaButtons";
 
-const GachaBanners = ({ images }) => {
+const GachaBanners = ({ images,setChangeBanner }) => {
   const bannerRef = useRef();
   const [banner, setBanner] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const bannerTypes = ["event", "standart", "standart"];
+  const bannerTypes = ["event", "event", "standard"];
 
   useEffect(() => {
     if (images.length > 0) {
+      setChangeBanner(banner)
       GachaCore.setBannerType(bannerTypes[banner]);
       bannerRef.current.style.transition = ".2s";
       bannerRef.current.style.opacity = 0;

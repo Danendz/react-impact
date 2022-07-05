@@ -3,13 +3,14 @@ import GachaContent from "./GachaContent/GachaContent";
 import cl from "./GachaMain.module.css";
 import GachaVideo from "./GachaVideo/GachaVideo";
 import GachaWishCounter from "./GachaWishCounter/GachaWishCounter";
+import GachaShop from "./GachaShop/GachaShop";
 
 const GachaMain = ({ downloadedVids }) => {
   const [video, setVideo] = useState(downloadedVids[0]);
   const [videoType, setVideoType] = useState("bg");
   const [isGaching, setIsGaching] = useState(false);
   const [isWishAnimationEnded, setIsWishAnimationEnded] = useState(false);
-
+  const [changeBanner, setChangeBanner] = useState(0)
   const changeVideo = useCallback(() => {
     const videos = {
       bg: downloadedVids[0],
@@ -47,14 +48,17 @@ const GachaMain = ({ downloadedVids }) => {
           setIsWishAnimationEnded={setIsWishAnimationEnded}
         />
         <GachaContent
+        setChangeBanner={setChangeBanner}
           isWishAnimationEnded={isWishAnimationEnded}
           setVideoType={setVideoType}
           isGaching={isGaching}
           setIsGaching={setIsGaching}
         />
         <GachaWishCounter
+        changeBanner={changeBanner}
           isGaching={isGaching}
         />
+        <GachaShop />
       </div>
     </div>
   );

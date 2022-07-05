@@ -19,6 +19,7 @@ const GachaBannersContent = ({
   isGaching,
   characters,
   weapons,
+  setChangeBanner
 }) => {
   const images = [eventCharacter, eventCharacterWeapon, standartBanner];
   const [fetchBannerImages, isLoading, bannerImages] = useDownloadMedia(images);
@@ -64,7 +65,7 @@ const GachaBannersContent = ({
         <p>У вас недостаточно молитв!</p>
       </GachaTempModal>
       <div className={cl.banners}>
-        <GachaBanners isLoading={isLoading} images={bannerImages} />
+        <GachaBanners setChangeBanner={setChangeBanner} images={bannerImages} />
         <GachaWishBtns isGaching={isGaching} getItems={itemsGetter} />
       </div>
     </div>

@@ -11,6 +11,7 @@ const GachaContent = ({
   isGaching,
   setVideoType,
   isWishAnimationEnded,
+  setChangeBanner
 }) => {
   const [visibleWishContent, setVisibleWishContent] = useState(false);
   const [wishItems, setWishItems] = useState([]);
@@ -53,6 +54,7 @@ const GachaContent = ({
         setIsGaching={setIsGaching}
       />
       <GachaBannersContent
+      setChangeBanner={setChangeBanner}
         characters={characters}
         weapons={weapons}
         isGaching={isGaching}

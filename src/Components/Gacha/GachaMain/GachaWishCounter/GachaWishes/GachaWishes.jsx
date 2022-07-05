@@ -4,8 +4,8 @@ import standardWish from "../../images/standardWish.webp";
 import GachaCore from "../../../GachaCore/GachaCore.ts";
 import cl from "./GachaWishes.module.css";
 import { Wishes } from "../../../GachaCore/GachaСurrencies";
-const GachaWishes = ({ isGaching, changeBanner }) => {
-  const [wishes, setWishes] = useState(0);
+const GachaWishes = ({ isGaching, changeBanner, wishes, setWishes }) => {
+  
   const [wishIcon, setWishIcon] = useState(eventWish);
   useEffect(() => {
     setWishes(Wishes.get());

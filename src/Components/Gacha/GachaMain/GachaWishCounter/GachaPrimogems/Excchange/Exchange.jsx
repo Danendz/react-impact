@@ -9,26 +9,26 @@ import ExchangeTitle from "./ExchangeTitle/ExchangeTitle";
 import ExchangeButtons from "./ExchangeButtons/ExchangeButtons";
 import ModalConfirmBtns from "../../../../../UI/ModalConfirmBtns/ModalConfirmBtns";
 
-const Exchange = ({ setPrimogems, setModal, modal }) => {
-
+const Exchange = ({ primogems, setPrimogems, setModal, modal, crystals, setCrystals }) => {
   const [exchangeValue, setExchangeValue] = useState(0);
 
   useEffect(() => {
     setExchangeValue(0);
   }, [modal]);
 
-  
   const confirmValue = () => {
-    setPrimogems(Primogems.get() + exchangeValue);
-    Primogems.add(exchangeValue)
-    GenesisCrystals.remove(exchangeValue);
+    setPrimogems(primogems + exchangeValue);
+    setCrystals(crystals - exchangeValue);
     setModal(false);
   };
 
   return (
     <div className={cl.btnsContainer}>
-     <ExchangeTitle />
-      <ExchangeButtons exchangeValue={exchangeValue} setExchangeValue={setExchangeValue}/>
+      <ExchangeTitle />
+      <ExchangeButtons
+        exchangeValue={exchangeValue}
+        setExchangeValue={setExchangeValue}
+      />
       <div className={cl.consume}>
         <h3>Consume: </h3>
         <img alt="crystal icon" src={crystalIcon} />

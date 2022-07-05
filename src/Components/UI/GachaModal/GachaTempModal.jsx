@@ -7,6 +7,7 @@ const GachaTempModal = ({modal, children}) => {
     }
     return (
       <div  className={modalClasses.join(' ')}>
+        <div ></div>
         <div style={{backgroundColor: 'rgba(0, 0, 0, 0.44)'}} className={cl.modal_content}>{children}</div>
       </div>
     );

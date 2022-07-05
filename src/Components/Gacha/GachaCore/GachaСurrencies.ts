@@ -1,3 +1,5 @@
+import React, {useState} from 'react';
+
 abstract class GachaСurrencies {
     static add(value: number): void { throw NotImplmentedError() };
 
@@ -17,6 +19,9 @@ export class Primogems extends GachaСurrencies {
     static get(): number {
         return this.primogems;
     }
+    static set(value: number){
+        this.primogems = value;
+    }
 }
 
 export class Wishes extends GachaСurrencies {
@@ -30,10 +35,14 @@ export class Wishes extends GachaСurrencies {
     static get(): number {
         return this.wishes;
     }
+    static set(value: number){
+        this.wishes = value;
+    }
 }
 
+
 export class GenesisCrystals extends GachaСurrencies{
-    private static crystals = 16000;
+    private static crystals: number = 16000;
     static add(value: number): void {
         this.crystals += value;
     }
@@ -42,6 +51,9 @@ export class GenesisCrystals extends GachaСurrencies{
     }
     static get(): number {
         return this.crystals;
+    }
+    static set(value: number){
+        this.crystals = value;
     }
 }
 

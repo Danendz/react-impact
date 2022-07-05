@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GenesisCrystals } from "../../../../../GachaCore/GachaСurrencies.ts";
-import cl from './ExchangeButtons.module.css'
+import cl from "./ExchangeButtons.module.css";
 const ExchangeButtons = ({ exchangeValue, setExchangeValue }) => {
   const decrementValue = (value) => {
     if (exchangeValue - value > 0) {

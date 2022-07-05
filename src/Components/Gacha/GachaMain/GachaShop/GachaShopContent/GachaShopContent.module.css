@@ -1,15 +1,60 @@
-.shopContent p{
-    color: white;
+.shopContent p {
+  color: white;
+}
+.shop {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  gap: 25px;
+  right: 0;
+  width: 81%;
 }
 
-.shop{
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    
-    gap: 25px;
-    right: -15px;
+.info{
+  position: absolute;
+  width: 197px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.212);
+}
+
+.info img{
+  width: 23px;
+  height: 23px;
+}
+
+.info span{
+  font-size: 19px;
+}
+
+.close{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+}
+
+.close button{
+  width: 30px;
+  height: 30px;
+  border: 2px solid #a99b92;
+  background-color: #eae1d8;
+  color: #343b4d;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+  .shop {
     width: 78%;
+  }
+  .info{
+    width: 180px;
+  }
 }

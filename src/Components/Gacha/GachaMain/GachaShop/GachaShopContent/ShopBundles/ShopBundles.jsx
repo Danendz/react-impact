@@ -1,14 +1,14 @@
 import React from "react";
 import ShopBundleItem from "./ShopBundleItem/ShopBundleItem";
-
-const ShopBundles = () => {
+import Bundles from "./Bundles";
+const ShopBundles = ({setCrystals, crystals}) => {
+    
   return (
     <>
-      <ShopBundleItem />
-      <ShopBundleItem />
-      <ShopBundleItem />
-      <ShopBundleItem />
-      <ShopBundleItem />
+    {Bundles.map(({bonus, value, cost}) => (
+        <ShopBundleItem crystals={crystals} setCrystals={setCrystals} key={value} bonus={bonus} value={value} cost={cost} />
+    ))}
+    
     </>
   );
 };

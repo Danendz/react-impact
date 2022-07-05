@@ -5,18 +5,30 @@ import primogem from "../../images/wish_Primogem.png";
 import Exchange from "./Excchange/Exchange";
 import cl from "./GachaPrimogems.module.css";
 
-const GachaPrimogems = ({ isGaching }) => {
-  const [primogems, setPrimogems] = useState(Primogems.get());
+const GachaPrimogems = ({
+  isGaching,
+  primogems,
+  setPrimogems,
+  setCrystals,
+  crystals,
+}) => {
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    setPrimogems(Primogems.get());
-  }, [isGaching]);
+    setPrimogems(primogems);
+  }, [primogems]);
 
   return (
     <>
       <GachaModal setModal={setModal} modal={modal}>
-        <Exchange modal={modal} setModal={setModal} setPrimogems={setPrimogems} />
+        <Exchange
+          crystals={crystals}
+          setCrystals={setCrystals}
+          modal={modal}
+          setModal={setModal}
+          setPrimogems={setPrimogems}
+          primogems={primogems}
+        />
       </GachaModal>
       <div className={cl.primogems} onClick={() => setModal(true)}>
         <img className={cl.primogemIcon} alt="wish" src={primogem} />

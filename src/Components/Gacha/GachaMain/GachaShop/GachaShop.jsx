@@ -3,7 +3,7 @@ import GachaModal from "../../../UI/GachaModal/GachaModal";
 import GachaShopContent from "./GachaShopContent/GachaShopContent";
 import cl from "./GachaShop.module.css";
 
-const GachaShop = ({ isGaching }) => {
+const GachaShop = ({ isGaching, crystals, setCrystals }) => {
   const [modal, setModal] = useState(false);
   return (
     <>
@@ -13,7 +13,12 @@ const GachaShop = ({ isGaching }) => {
         modal={modal}
         setModal={setModal}
       >
-        <GachaShopContent />
+        <GachaShopContent
+          modal={modal}
+          setModal={setModal}
+          crystals={crystals}
+          setCrystals={setCrystals}
+        />
       </GachaModal>
       <div
         style={isGaching ? { display: "none" } : { display: "block" }}

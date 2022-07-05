@@ -1,7 +1,15 @@
 .shopContent p{
     color: white;
 }
+
 .shop{
     position: absolute;
-    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    
+    gap: 25px;
+    right: -15px;
+    width: 78%;
 }

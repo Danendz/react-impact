@@ -1,0 +1,122 @@
+.item {
+  width: 190px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: scale(1.1);
+}
+
+.bonus {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff8f99;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.bonus::after::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+}
+
+.bonus img {
+  position: absolute;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+}
+
+.bonusTitle {
+  font-size: 15px;
+  color: #ffdec2 !important;
+}
+.bonusValue {
+  color: white !important;
+}
+
+.genesisValue,
+.price {
+  color: #555766;
+}
+
+.genesisBig {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #6f8db1;
+  height: 60%;
+  border-left: 2px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  -webkit-box-shadow: -2px -68px 53px -19px rgba(236, 229, 219, 0.89) inset;
+  -moz-box-shadow: -2px -68px 53px -19px rgba(236, 229, 219, 0.89) inset;
+  box-shadow: -2px -68px 53px -19px rgba(236, 229, 219, 0.89) inset;
+}
+
+.genesisBig img {
+  width: 110px;
+  height: 110px;
+}
+
+.genesisValueContainer {
+  width: 100%;
+  text-align: center;
+  background-color: #ece5db;
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.price {
+  font-weight: 600;
+  font-size: 21px;
+  width: 100%;
+  height: 80%;
+  background-color: #fce5b1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+@media only screen and (max-width: 960px) {
+  .item {
+    width: 170px;
+    height: 150px;
+  }
+
+  .genesisValueContainer {
+    font-size: 17px;
+  }
+
+  .genesisBig img {
+    width: 80px;
+    height: 80px;
+  }
+}

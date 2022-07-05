@@ -22,10 +22,7 @@
 
   color: white;
 }
-.modal_content p {
-  font-size: 20px;
-  color: #34495e;
-}
+
 .modal.active {
   display: flex;
   justify-content: center;
@@ -40,6 +37,7 @@
 }
 
 .modal_content.menuContent {
+  position: unset;
   background-color: rgba(0, 0, 0, 0.44);
   width: 240px;
   height: 100%;
@@ -52,10 +50,10 @@
   .modal_content {
     width: 450px;
   }
-  .modal_content p {
-    font-size: 20px;
+  .modal_content.menuContent, .modal.menuModal {
+    border-radius: 0;
   }
   .modal_content.menuContent {
-    border-radius: 0;
+    width: 180px;
   }
 }

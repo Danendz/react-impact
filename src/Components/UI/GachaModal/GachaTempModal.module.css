@@ -1,44 +1,43 @@
 .modal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.24);
-    z-index: 1;
-  }
-  
-  .modal_content{
-    position: relative;
-    background-color: #e5e2db;
-    border-radius: 10px;
-    width: 640px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    padding: 20px 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.24);
+  z-index: 1;
+}
 
-    color: white;
+.modal_content {
+  position: relative;
+  background-color: #e5e2db;
+  border-radius: 10px;
+  width: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  padding: 20px 0;
+
+  color: white;
+}
+.modal_content p {
+  font-size: 20px;
+  color: #34495e;
+}
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 960px) {
+  .modal_content {
+    width: 450px;
   }
-  .modal_content p{
+  .modal_content p {
     font-size: 20px;
-    color: #34495e;
   }
-  .modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  @media only screen and (max-width: 730px) {
-    .modal_content {
-      width: 450px;
-      
-    }
-    .modal_content p{
-      font-size: 20px;
-    }
-  }
-  
+}

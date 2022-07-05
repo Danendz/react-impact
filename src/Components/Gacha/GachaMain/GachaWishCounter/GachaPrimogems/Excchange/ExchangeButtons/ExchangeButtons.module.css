@@ -1,0 +1,52 @@
+.exchangeBtns {
+  width: fit-content;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.288);
+}
+
+.addMore {
+  display: flex;
+  gap: 10px;
+}
+
+.exchangeBtns button,
+.addMore button {
+  background-color: #34495e;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.addMore button {
+    transition: 0.3s;
+    padding: 5px 10px;
+    width: 90px;
+    border-radius: 15px;
+  }
+
+.exchangeBtns button {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: 0.3s;
+}
+
+.exchangeBtns span {
+  text-align: center;
+  user-select: none;
+  color: white;
+  width: 70px;
+  height: 20px;
+}
+
+.exchangeBtns button:hover,
+.addMore button:hover {
+  background-color: rgba(52, 73, 94, 0.451);
+  color: white;
+}

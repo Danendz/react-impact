@@ -7,80 +7,6 @@
   align-items: center;
 }
 
-.btnsContainer h1 {
-  width: 100%;
-  text-align: center;
-  color: #34495e;
-  border-bottom: 1px solid #34495e;
-}
-
-.exchangeBtns {
-  width: fit-content;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.288);
-}
-.exchangeBtns button,
-.confirmBtn,
-.addMore button {
-  background-color: #34495e;
-
-  border: 0;
-  cursor: pointer;
-  user-select: none;
-}
-
-.exchangeBtns button {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: 0.3s;
-}
-
-.exchangeBtns span {
-  text-align: center;
-  user-select: none;
-
-  color: white;
-  width: 70px;
-  height: 20px;
-}
-
-.confirmBtn {
-  transition: 0.3s;
-  width: 100px;
-  border-radius: 10px;
-  padding: 5px 2px;
-}
-
-.confirmBtn:hover,
-.exchangeBtns button:hover,
-.addMore button:hover {
-  background-color: rgba(52, 73, 94, 0.451);
-  color: white;
-}
-
-.addMore {
-  display: flex;
-  gap: 10px;
-}
-
-.addMore button {
-  transition: 0.3s;
-  padding: 5px 10px;
-  width: 90px;
-  border-radius: 15px;
-}
-.resultBtns {
-  display: flex;
-  gap: 10px;
-}
-
 .consume h3 {
   color: #34495e;
 }
@@ -98,58 +24,8 @@
   height: 30px;
 }
 
-.reedem {
-  display: flex;
-  position: relative;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #d2cabd;
-  width: 100%;
-}
-
-.reedem::after{
-    content: '=>';
-    position: absolute;
-    font-size: 35px;
-    font-weight: 600;
-}
-
-.reedem h2 {
-  font-size: 20px;
-  text-align: center;
-  font-weight: 600;
-  user-select: none;
-  color: #34495e;
-}
-.reedem img {
-  width: 90px;
-  height: 90px;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.reedem div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 10px;
-  width: 100%;
-}
-
-.reedem div:last-child {
-  background-color: #ebd6a1;
-}
 @media only screen and (max-width: 960px) {
-    .btnsContainer{
-        gap: 15px;
-    }
-    .reedem img{
-        width: 50px;
-        height: 50px;
-    }
-    .reedem h2{
-        font-size: 15px;
-    }
+  .btnsContainer {
+    gap: 10px;
+  }
 }
